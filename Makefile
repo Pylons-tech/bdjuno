@@ -3,9 +3,6 @@ COMMIT  := $(shell git log -1 --format='%H')
 
 export GO111MODULE = on
 
-include .env
-export
-
 ###############################################################################
 ###                                   All                                   ###
 ###############################################################################
@@ -55,7 +52,7 @@ stop-docker-test:
 
 start-docker-test: stop-docker-test
 	@echo "Starting Docker container..."
-	@docker run --name bdjuno-test-db -e POSTGRES_USER=${POSTGRES_USER} -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} -e POSTGRES_DB=${POSTGRES_DB} -d -p 5433:5432 postgres
+	@docker run --name bdjuno-test-db -e POSTGRES_USER=bdjuno -e POSTGRES_PASSWORD=password -e POSTGRES_DB=bdjuno -d -p 5433:5432 postgres
 .PHONY: start-docker-test
 
 test-unit: start-docker-test
