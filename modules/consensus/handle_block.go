@@ -3,20 +3,17 @@ package consensus
 import (
 	"fmt"
 
-	"github.com/forbole/juno/v2/types"
-
 	"github.com/rs/zerolog/log"
+
+	"github.com/forbole/bdjuno/database"
 
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 )
 
-// HandleBlock implements modules.Module
-func (m *Module) HandleBlock(
-	b *tmctypes.ResultBlock, _ *tmctypes.ResultBlockResults, _ []*types.Tx, _ *tmctypes.ResultValidators,
-) error {
-	err := m.updateBlockTimeFromGenesis(b)
+func HandleBlock(block *tmctypes.ResultBlock, db *database.Db) error {
+	err := updateBlockTimeFromGenesis(block, db)
 	if err != nil {
-		log.Error().Str("module", "consensus").Int64("height", b.Block.Height).
+		log.Error().Str("module", "consensus").Int64("height", block.Block.Height).
 			Err(err).Msg("error while updating block time from genesis")
 	}
 
@@ -24,11 +21,11 @@ func (m *Module) HandleBlock(
 }
 
 // updateBlockTimeFromGenesis insert average block time from genesis
-func (m *Module) updateBlockTimeFromGenesis(block *tmctypes.ResultBlock) error {
+func updateBlockTimeFromGenesis(block *tmctypes.ResultBlock, db *database.Db) error {
 	log.Trace().Str("module", "consensus").Int64("height", block.Block.Height).
 		Msg("updating block time from genesis")
 
-	genesis, err := m.db.GetGenesis()
+	genesis, err := db.GetGenesis()
 	if err != nil {
 		return fmt.Errorf("error while getting genesis: %s", err)
 	}
@@ -42,5 +39,5 @@ func (m *Module) updateBlockTimeFromGenesis(block *tmctypes.ResultBlock) error {
 	}
 
 	newBlockTime := block.Block.Time.Sub(genesis.Time).Seconds() / float64(block.Block.Height-genesis.InitialHeight)
-	return m.db.SaveAverageBlockTimeGenesis(newBlockTime, block.Block.Height)
+	return db.SaveAverageBlockTimeGenesis(newBlockTime, block.Block.Height)
 }

@@ -1,24 +1,54 @@
 package distribution
 
 import (
-	juno "github.com/forbole/juno/v2/types"
+	"context"
 
+	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
+	"github.com/desmos-labs/juno/client"
+	"github.com/rs/zerolog/log"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
+
+	"github.com/forbole/bdjuno/types"
+
+	"github.com/forbole/bdjuno/database"
+	distrutils "github.com/forbole/bdjuno/modules/distribution/utils"
+	"github.com/forbole/bdjuno/types/config"
 )
 
-// HandleBlock implements modules.BlockModule
-func (m *Module) HandleBlock(
-	b *tmctypes.ResultBlock, _ *tmctypes.ResultBlockResults, _ []*juno.Tx, _ *tmctypes.ResultValidators,
-) error {
-	// Update the validator commissions amount upon reaching interval or if no commission amount is saved in db
-	if m.shouldUpdateValidatorsCommissionAmounts(b.Block.Height) {
-		go m.updateValidatorsCommissionAmounts(b.Block.Height)
-	}
+// HandleBlock represents a method that is called each time a new block is created
+func HandleBlock(cfg *config.Config, block *tmctypes.ResultBlock, client distrtypes.QueryClient, db *database.Db) error {
+	go updateParams(block.Block.Height, client, db)
 
-	// Update the delegators commissions amounts upon reaching interval or no rewards saved yet
-	if m.shouldUpdateDelegatorRewardsAmounts(b.Block.Height) {
-		go m.refreshDelegatorsRewardsAmounts(b.Block.Height)
-	}
+	// Update the validator commissions
+	go distrutils.UpdateValidatorsCommissionAmounts(cfg, block.Block.Height, client, db)
+
+	// Update the delegators commissions amounts
+	go distrutils.UpdateDelegatorsRewardsAmounts(cfg, block.Block.Height, client, db)
 
 	return nil
+}
+
+func updateParams(height int64, distrClient distrtypes.QueryClient, db *database.Db) {
+	log.Debug().Str("module", "distribution").Int64("height", height).
+		Msg("updating params")
+
+	res, err := distrClient.Params(
+		context.Background(),
+		&distrtypes.QueryParamsRequest{},
+		client.GetHeightRequestHeader(height),
+	)
+	if err != nil {
+		log.Error().Str("module", "distribution").Err(err).
+			Int64("height", height).
+			Msg("error while getting params")
+		return
+	}
+
+	err = db.SaveDistributionParams(types.NewDistributionParams(res.Params, height))
+	if err != nil {
+		log.Error().Str("module", "distribution").Err(err).
+			Int64("height", height).
+			Msg("error while saving params")
+		return
+	}
 }
