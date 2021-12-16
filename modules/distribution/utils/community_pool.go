@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/database"
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	"github.com/rs/zerolog/log"

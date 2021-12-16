@@ -3,12 +3,12 @@ package slashing
 import (
 	"context"
 
-	"github.com/pylons-tech/juno/client"
+	"github.com/desmos-labs/juno/client"
 
-	slashingutils "github.com/pylons-tech/bdjuno/modules/slashing/utils"
+	slashingutils "github.com/forbole/bdjuno/modules/slashing/utils"
 
-	"github.com/pylons-tech/bdjuno/database"
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/types"
 
 	"github.com/rs/zerolog/log"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"

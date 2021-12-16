@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pylons-tech/bdjuno/types/config"
+	"github.com/forbole/bdjuno/types/config"
 
-	historyutils "github.com/pylons-tech/bdjuno/modules/history/utils"
-	"github.com/pylons-tech/bdjuno/modules/utils"
+	historyutils "github.com/forbole/bdjuno/modules/history/utils"
+	"github.com/forbole/bdjuno/modules/utils"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/database"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/types"
 
 	"github.com/rs/zerolog/log"
 )

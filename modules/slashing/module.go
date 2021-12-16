@@ -3,10 +3,10 @@ package slashing
 import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/database"
 
-	"github.com/pylons-tech/juno/modules"
-	"github.com/pylons-tech/juno/types"
+	"github.com/desmos-labs/juno/modules"
+	"github.com/desmos-labs/juno/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 )
 

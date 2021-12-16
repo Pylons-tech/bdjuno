@@ -1,10 +1,10 @@
 package modules
 
 import (
-	"github.com/pylons-tech/juno/modules"
-	juno "github.com/pylons-tech/juno/types"
+	"github.com/desmos-labs/juno/modules"
+	juno "github.com/desmos-labs/juno/types"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/database"
 )
 
 var (

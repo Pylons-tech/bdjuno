@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/types"
 )
 
 // SaveValidatorsSigningInfos saves the given infos inside the database

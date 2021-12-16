@@ -3,12 +3,12 @@ package consensus
 import (
 	"encoding/json"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/database"
 
+	"github.com/desmos-labs/juno/client"
+	"github.com/desmos-labs/juno/modules"
+	"github.com/desmos-labs/juno/types"
 	"github.com/go-co-op/gocron"
-	"github.com/pylons-tech/juno/client"
-	"github.com/pylons-tech/juno/modules"
-	"github.com/pylons-tech/juno/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )

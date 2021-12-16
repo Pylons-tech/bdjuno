@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pylons-tech/bdjuno/database"
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/types"
 )
 
 // UpdateAccountBalanceHistory updates the historic balance for the user having the given address

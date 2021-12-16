@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/pylons-tech/bdjuno/types/config"
+	"github.com/forbole/bdjuno/types/config"
 )
 
 func TestConfigParser_WithPricefeedConfig(t *testing.T) {

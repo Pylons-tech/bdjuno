@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/pylons-tech/juno/client"
+	"github.com/desmos-labs/juno/client"
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/database"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"

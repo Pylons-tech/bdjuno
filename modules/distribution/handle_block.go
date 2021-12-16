@@ -4,15 +4,15 @@ import (
 	"context"
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	"github.com/pylons-tech/juno/client"
+	"github.com/desmos-labs/juno/client"
 	"github.com/rs/zerolog/log"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/types"
 
-	"github.com/pylons-tech/bdjuno/database"
-	distrutils "github.com/pylons-tech/bdjuno/modules/distribution/utils"
-	"github.com/pylons-tech/bdjuno/types/config"
+	"github.com/forbole/bdjuno/database"
+	distrutils "github.com/forbole/bdjuno/modules/distribution/utils"
+	"github.com/forbole/bdjuno/types/config"
 )
 
 // HandleBlock represents a method that is called each time a new block is created

@@ -3,8 +3,8 @@ package history
 import (
 	"time"
 
-	"github.com/pylons-tech/bdjuno/database"
-	historyutils "github.com/pylons-tech/bdjuno/modules/history/utils"
+	"github.com/forbole/bdjuno/database"
+	historyutils "github.com/forbole/bdjuno/modules/history/utils"
 )
 
 // HandleGenesis handles the genesis operations for the history module, storing the initial history data

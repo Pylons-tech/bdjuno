@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/types"
 
-	dbtypes "github.com/pylons-tech/bdjuno/database/types"
+	dbtypes "github.com/forbole/bdjuno/database/types"
 )
 
 // GetLastBlock returns the last block stored inside the database based on the heights

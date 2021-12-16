@@ -1,10 +1,10 @@
 package config
 
 import (
+	juno "github.com/desmos-labs/juno/types"
 	"github.com/pelletier/go-toml"
-	juno "github.com/pylons-tech/juno/types"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/types"
 )
 
 var _ juno.Config = &Config{}

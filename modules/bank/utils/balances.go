@@ -4,13 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/pylons-tech/juno/client"
+	"github.com/desmos-labs/juno/client"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/rs/zerolog/log"
 
-	"github.com/pylons-tech/bdjuno/database"
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/types"
 )
 
 // RefreshBalances updates the balances of the accounts having the given addresses,
