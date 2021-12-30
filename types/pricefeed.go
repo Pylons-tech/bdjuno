@@ -4,8 +4,8 @@ import "time"
 
 // Token represents a valid token inside the chain
 type Token struct {
-	Name  string      `yaml:"name"`
-	Units []TokenUnit `yaml:"units"`
+	Name  string      `toml:"name"`
+	Units []TokenUnit `toml:"units"`
 }
 
 func NewToken(name string, units []TokenUnit) Token {
@@ -17,10 +17,10 @@ func NewToken(name string, units []TokenUnit) Token {
 
 // TokenUnit represents a unit of a token
 type TokenUnit struct {
-	Denom    string   `yaml:"denom"`
-	Exponent int      `yaml:"exponent"`
-	Aliases  []string `yaml:"aliases,omitempty"`
-	PriceID  string   `yaml:"price_id,omitempty"`
+	Denom    string   `toml:"denom"`
+	Exponent int      `toml:"exponent"`
+	Aliases  []string `toml:"aliases"`
+	PriceID  string   `toml:"price_id"`
 }
 
 func NewTokenUnit(denom string, exponent int, aliases []string, priceID string) TokenUnit {

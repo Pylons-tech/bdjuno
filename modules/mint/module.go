@@ -1,36 +1,46 @@
 package mint
 
 import (
-	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/forbole/juno/v2/modules"
+	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
+	"github.com/desmos-labs/juno/modules"
+	juno "github.com/desmos-labs/juno/types"
+	"github.com/go-co-op/gocron"
+	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/forbole/bdjuno/v2/database"
-	mintsource "github.com/forbole/bdjuno/v2/modules/mint/source"
+	"github.com/forbole/bdjuno/database"
 )
 
 var (
 	_ modules.Module                   = &Module{}
-	_ modules.GenesisModule            = &Module{}
+	_ modules.BlockModule              = &Module{}
 	_ modules.PeriodicOperationsModule = &Module{}
 )
 
 // Module represent database/mint module
 type Module struct {
-	cdc    codec.Marshaler
-	db     *database.Db
-	source mintsource.Source
+	mintClient minttypes.QueryClient
+	db         *database.Db
 }
 
 // NewModule returns a new Module instance
-func NewModule(source mintsource.Source, cdc codec.Marshaler, db *database.Db) *Module {
+func NewModule(mintClient minttypes.QueryClient, db *database.Db) *Module {
 	return &Module{
-		cdc:    cdc,
-		db:     db,
-		source: source,
+		mintClient: mintClient,
+		db:         db,
 	}
 }
 
 // Name implements modules.Module
 func (m *Module) Name() string {
 	return "mint"
+}
+
+// RegisterPeriodicOperations implements modules.PeriodicOperationsModule
+func (m *Module) RegisterPeriodicOperations(scheduler *gocron.Scheduler) error {
+	return RegisterPeriodicOps(scheduler, m.mintClient, m.db)
+}
+
+// HandleBlock implements modules.BlockModule
+func (m *Module) HandleBlock(block *tmctypes.ResultBlock, _ []*juno.Tx, _ *tmctypes.ResultValidators) error {
+	return HandleBlock(block, m.mintClient, m.db)
 }

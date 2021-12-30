@@ -4,47 +4,35 @@ import (
 	"encoding/json"
 	"fmt"
 
-	tmtypes "github.com/tendermint/tendermint/types"
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/types"
 
-	"github.com/forbole/bdjuno/v2/types"
-
+	"github.com/cosmos/cosmos-sdk/codec"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/rs/zerolog/log"
 )
 
-// HandleGenesis implements modules.Module
-func (m *Module) HandleGenesis(doc *tmtypes.GenesisDoc, appState map[string]json.RawMessage) error {
+func HandleGenesis(appState map[string]json.RawMessage, cdc codec.Codec, db *database.Db) error {
 	log.Debug().Str("module", "gov").Msg("parsing genesis")
 
 	// Read the genesis state
 	var genState govtypes.GenesisState
-	err := m.cdc.UnmarshalJSON(appState[govtypes.ModuleName], &genState)
+	err := cdc.UnmarshalJSON(appState[govtypes.ModuleName], &genState)
 	if err != nil {
 		return fmt.Errorf("error while reading gov genesis data: %s", err)
 	}
 
 	// Save the proposals
-	err = m.saveProposals(genState.Proposals)
+	err = saveProposals(genState.Proposals, db)
 	if err != nil {
 		return fmt.Errorf("error while storing genesis governance proposals: %s", err)
-	}
-
-	// Save the params
-	err = m.db.SaveGovParams(types.NewGovParams(
-		types.NewVotingParams(genState.VotingParams),
-		types.NewDepositParam(genState.DepositParams),
-		types.NewTallyParams(genState.TallyParams),
-		doc.InitialHeight,
-	))
-	if err != nil {
-		return fmt.Errorf("error while storing genesis governance params: %s", err)
 	}
 
 	return nil
 }
 
 // saveProposals save proposals from genesis file
-func (m *Module) saveProposals(slice govtypes.Proposals) error {
+func saveProposals(slice govtypes.Proposals, db *database.Db) error {
 	proposals := make([]types.Proposal, len(slice))
 	tallyResults := make([]types.TallyResult, len(slice))
 	deposits := make([]types.Deposit, len(slice))
@@ -66,10 +54,10 @@ func (m *Module) saveProposals(slice govtypes.Proposals) error {
 
 		tallyResults[index] = types.NewTallyResult(
 			proposal.ProposalId,
-			proposal.FinalTallyResult.Yes.String(),
-			proposal.FinalTallyResult.Abstain.String(),
-			proposal.FinalTallyResult.No.String(),
-			proposal.FinalTallyResult.NoWithVeto.String(),
+			proposal.FinalTallyResult.Yes.Int64(),
+			proposal.FinalTallyResult.Abstain.Int64(),
+			proposal.FinalTallyResult.No.Int64(),
+			proposal.FinalTallyResult.NoWithVeto.Int64(),
 			1,
 		)
 
@@ -82,17 +70,17 @@ func (m *Module) saveProposals(slice govtypes.Proposals) error {
 	}
 
 	// Save the proposals
-	err := m.db.SaveProposals(proposals)
+	err := db.SaveProposals(proposals)
 	if err != nil {
 		return err
 	}
 
 	// Save the deposits
-	err = m.db.SaveDeposits(deposits)
+	err = db.SaveDeposits(deposits)
 	if err != nil {
 		return err
 	}
 
 	// Save the tally results
-	return m.db.SaveTallyResults(tallyResults)
+	return db.SaveTallyResults(tallyResults)
 }

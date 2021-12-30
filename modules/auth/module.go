@@ -1,12 +1,17 @@
 package auth
 
 import (
-	"github.com/cosmos/cosmos-sdk/codec"
+	"encoding/json"
 
-	"github.com/forbole/bdjuno/v2/database"
+	"github.com/forbole/bdjuno/database"
 
-	"github.com/forbole/juno/v2/modules"
-	"github.com/forbole/juno/v2/modules/messages"
+	"github.com/cosmos/cosmos-sdk/simapp/params"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	authttypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	"github.com/desmos-labs/juno/modules"
+	"github.com/desmos-labs/juno/modules/messages"
+	juno "github.com/desmos-labs/juno/types"
+	tmtypes "github.com/tendermint/tendermint/types"
 )
 
 var (
@@ -17,16 +22,22 @@ var (
 
 // Module represents the x/auth module
 type Module struct {
-	cdc            codec.Marshaler
-	db             *database.Db
 	messagesParser messages.MessageAddressesParser
+	encodingConfig *params.EncodingConfig
+	authClient     authttypes.QueryClient
+	db             *database.Db
 }
 
 // NewModule builds a new Module instance
-func NewModule(messagesParser messages.MessageAddressesParser, cdc codec.Marshaler, db *database.Db) *Module {
+func NewModule(
+	messagesParser messages.MessageAddressesParser,
+	authClient authttypes.QueryClient,
+	encodingConfig *params.EncodingConfig, db *database.Db,
+) *Module {
 	return &Module{
 		messagesParser: messagesParser,
-		cdc:            cdc,
+		encodingConfig: encodingConfig,
+		authClient:     authClient,
 		db:             db,
 	}
 }
@@ -34,4 +45,14 @@ func NewModule(messagesParser messages.MessageAddressesParser, cdc codec.Marshal
 // Name implements modules.Module
 func (m *Module) Name() string {
 	return "auth"
+}
+
+// HandleGenesis implements modules.GenesisModule
+func (m *Module) HandleGenesis(_ *tmtypes.GenesisDoc, appState map[string]json.RawMessage) error {
+	return Handler(appState, m.encodingConfig.Marshaler, m.db)
+}
+
+// HandleMsg implements modules.MessageModule
+func (m *Module) HandleMsg(_ int, msg sdk.Msg, _ *juno.Tx) error {
+	return HandleMsg(msg, m.messagesParser, m.encodingConfig.Marshaler, m.db)
 }

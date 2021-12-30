@@ -10,7 +10,7 @@ func (db *Db) InsertEnableModules(modules []string) error {
 		return nil
 	}
 
-	// Remove existing modules
+	//clear table first
 	stmt := "DELETE FROM modules WHERE TRUE"
 	_, err := db.Sql.Exec(stmt)
 	if err != nil {

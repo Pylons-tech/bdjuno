@@ -3,8 +3,8 @@ package database
 import (
 	"fmt"
 
-	db "github.com/forbole/juno/v2/database"
-	"github.com/forbole/juno/v2/database/postgresql"
+	"github.com/desmos-labs/juno/db"
+	"github.com/desmos-labs/juno/db/postgresql"
 	"github.com/jmoiron/sqlx"
 )
 

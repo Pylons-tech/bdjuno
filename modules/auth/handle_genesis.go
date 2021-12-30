@@ -4,31 +4,28 @@ import (
 	"encoding/json"
 	"fmt"
 
-	tmtypes "github.com/tendermint/tendermint/types"
-
 	"github.com/rs/zerolog/log"
+
+	"github.com/forbole/bdjuno/database"
+
+	"github.com/cosmos/cosmos-sdk/codec"
+
+	authutils "github.com/forbole/bdjuno/modules/auth/utils"
 )
 
-// HandleGenesis implements modules.GenesisModule
-func (m *Module) HandleGenesis(_ *tmtypes.GenesisDoc, appState map[string]json.RawMessage) error {
+// Handler handles the genesis state of the x/auth module in order to store the initial values
+// of the different accounts.
+func Handler(appState map[string]json.RawMessage, cdc codec.Codec, db *database.Db) error {
 	log.Debug().Str("module", "auth").Msg("parsing genesis")
 
-	accounts, err := GetGenesisAccounts(appState, m.cdc)
+	accounts, err := authutils.GetGenesisAccounts(appState, cdc)
 	if err != nil {
 		return fmt.Errorf("error while getting genesis accounts: %s", err)
 	}
-	err = m.db.SaveAccounts(accounts)
+
+	err = db.SaveAccounts(accounts)
 	if err != nil {
 		return fmt.Errorf("error while storing genesis accounts: %s", err)
-	}
-
-	vestingAccounts, err := GetGenesisVestingAccounts(appState, m.cdc)
-	if err != nil {
-		return fmt.Errorf("error while getting genesis vesting accounts: %s", err)
-	}
-	err = m.db.SaveVestingAccounts(vestingAccounts)
-	if err != nil {
-		return fmt.Errorf("error while storing genesis vesting accounts: %s", err)
 	}
 
 	return nil

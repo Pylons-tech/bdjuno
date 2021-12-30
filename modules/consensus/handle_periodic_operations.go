@@ -6,27 +6,28 @@ import (
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/v2/modules/utils"
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/modules/utils"
 )
 
-// RegisterPeriodicOperations implements modules.Module
-func (m *Module) RegisterPeriodicOperations(scheduler *gocron.Scheduler) error {
+// Register registers the utils that should be run periodically
+func Register(scheduler *gocron.Scheduler, db *database.Db) error {
 	log.Debug().Str("module", "consensus").Msg("setting up periodic tasks")
 
 	if _, err := scheduler.Every(1).Minute().Do(func() {
-		utils.WatchMethod(m.updateBlockTimeInMinute)
+		utils.WatchMethod(func() error { return updateBlockTimeInMinute(db) })
 	}); err != nil {
 		return fmt.Errorf("error while setting up consensus periodic operation: %s", err)
 	}
 
-	if _, err := scheduler.Every(1).Hour().Do(func() {
-		utils.WatchMethod(m.updateBlockTimeInHour)
+	if _, err := scheduler.Every(1).Hour().StartImmediately().Do(func() {
+		utils.WatchMethod(func() error { return updateBlockTimeInHour(db) })
 	}); err != nil {
 		return fmt.Errorf("error while setting up consensus periodic operation: %s", err)
 	}
 
-	if _, err := scheduler.Every(1).Day().Do(func() {
-		utils.WatchMethod(m.updateBlockTimeInDay)
+	if _, err := scheduler.Every(1).Day().StartImmediately().Do(func() {
+		utils.WatchMethod(func() error { return updateBlockTimeInDay(db) })
 	}); err != nil {
 		return fmt.Errorf("error while setting up consensus periodic operation: %s", err)
 	}
@@ -35,16 +36,16 @@ func (m *Module) RegisterPeriodicOperations(scheduler *gocron.Scheduler) error {
 }
 
 // updateBlockTimeInMinute insert average block time in the latest minute
-func (m *Module) updateBlockTimeInMinute() error {
+func updateBlockTimeInMinute(db *database.Db) error {
 	log.Trace().Str("module", "consensus").Str("operation", "block time").
 		Msg("updating block time in minutes")
 
-	block, err := m.db.GetLastBlock()
+	block, err := db.GetLastBlock()
 	if err != nil {
 		return fmt.Errorf("error while getting last block: %s", err)
 	}
 
-	genesis, err := m.db.GetGenesis()
+	genesis, err := db.GetGenesis()
 	if err != nil {
 		return fmt.Errorf("error while getting genesis: %s", err)
 	}
@@ -59,26 +60,26 @@ func (m *Module) updateBlockTimeInMinute() error {
 		return nil
 	}
 
-	minute, err := m.db.GetBlockHeightTimeMinuteAgo(block.Timestamp)
+	minute, err := db.GetBlockHeightTimeMinuteAgo(block.Timestamp)
 	if err != nil {
 		return fmt.Errorf("error while gettting block height a minute ago: %s", err)
 	}
 	newBlockTime := block.Timestamp.Sub(minute.Timestamp).Seconds() / float64(block.Height-minute.Height)
 
-	return m.db.SaveAverageBlockTimePerMin(newBlockTime, block.Height)
+	return db.SaveAverageBlockTimePerMin(newBlockTime, block.Height)
 }
 
 // updateBlockTimeInHour insert average block time in the latest hour
-func (m *Module) updateBlockTimeInHour() error {
+func updateBlockTimeInHour(db *database.Db) error {
 	log.Trace().Str("module", "consensus").Str("operation", "block time").
 		Msg("updating block time in hours")
 
-	block, err := m.db.GetLastBlock()
+	block, err := db.GetLastBlock()
 	if err != nil {
 		return fmt.Errorf("error while getting last block: %s", err)
 	}
 
-	genesis, err := m.db.GetGenesis()
+	genesis, err := db.GetGenesis()
 	if err != nil {
 		return fmt.Errorf("error while getting genesis: %s", err)
 	}
@@ -93,26 +94,26 @@ func (m *Module) updateBlockTimeInHour() error {
 		return nil
 	}
 
-	hour, err := m.db.GetBlockHeightTimeHourAgo(block.Timestamp)
+	hour, err := db.GetBlockHeightTimeHourAgo(block.Timestamp)
 	if err != nil {
 		return fmt.Errorf("error while getting block height an hour ago: %s", err)
 	}
 	newBlockTime := block.Timestamp.Sub(hour.Timestamp).Seconds() / float64(block.Height-hour.Height)
 
-	return m.db.SaveAverageBlockTimePerHour(newBlockTime, block.Height)
+	return db.SaveAverageBlockTimePerHour(newBlockTime, block.Height)
 }
 
 // updateBlockTimeInDay insert average block time in the latest minute
-func (m *Module) updateBlockTimeInDay() error {
+func updateBlockTimeInDay(db *database.Db) error {
 	log.Trace().Str("module", "consensus").Str("operation", "block time").
 		Msg("updating block time in days")
 
-	block, err := m.db.GetLastBlock()
+	block, err := db.GetLastBlock()
 	if err != nil {
 		return fmt.Errorf("error while getting last block: %s", err)
 	}
 
-	genesis, err := m.db.GetGenesis()
+	genesis, err := db.GetGenesis()
 	if err != nil {
 		return fmt.Errorf("error while getting genesis: %s", err)
 	}
@@ -127,11 +128,11 @@ func (m *Module) updateBlockTimeInDay() error {
 		return nil
 	}
 
-	day, err := m.db.GetBlockHeightTimeDayAgo(block.Timestamp)
+	day, err := db.GetBlockHeightTimeDayAgo(block.Timestamp)
 	if err != nil {
 		return fmt.Errorf("error while getting block time a day ago: %s", err)
 	}
 	newBlockTime := block.Timestamp.Sub(day.Timestamp).Seconds() / float64(block.Height-day.Height)
 
-	return m.db.SaveAverageBlockTimePerDay(newBlockTime, block.Height)
+	return db.SaveAverageBlockTimePerDay(newBlockTime, block.Height)
 }

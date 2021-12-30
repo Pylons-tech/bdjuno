@@ -1,18 +1,22 @@
 package bank
 
 import (
-	"github.com/forbole/juno/v2/types"
+	"context"
+	"fmt"
+
+	"github.com/desmos-labs/juno/client"
 
 	"github.com/rs/zerolog/log"
 
+	"github.com/forbole/bdjuno/database"
+
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 )
 
-// HandleBlock implements modules.BlockModule
-func (m *Module) HandleBlock(
-	block *tmctypes.ResultBlock, _ *tmctypes.ResultBlockResults, _ []*types.Tx, _ *tmctypes.ResultValidators,
-) error {
-	err := m.updateSupply(block.Block.Height)
+// HandleBlock allows to handle a block properly
+func HandleBlock(block *tmctypes.ResultBlock, bankClient banktypes.QueryClient, db *database.Db) error {
+	err := updateSupply(block.Block.Height, bankClient, db)
 	if err != nil {
 		log.Error().Str("module", "bank").Int64("height", block.Block.Height).
 			Err(err).Msg("error while updating supply")
@@ -22,13 +26,18 @@ func (m *Module) HandleBlock(
 }
 
 // updateSupply updates the supply of all the tokens for the given height
-func (m *Module) updateSupply(height int64) error {
-	log.Debug().Str("module", "bank").Int64("height", height).Msg("updating supply")
+func updateSupply(height int64, bankClient banktypes.QueryClient, db *database.Db) error {
+	log.Debug().Str("module", "bank").Int64("height", height).
+		Msg("updating supply")
 
-	supply, err := m.keeper.GetSupply(height)
+	res, err := bankClient.TotalSupply(
+		context.Background(),
+		&banktypes.QueryTotalSupplyRequest{},
+		client.GetHeightRequestHeader(height),
+	)
 	if err != nil {
-		return err
+		return fmt.Errorf("error while getting total supply: %s", err)
 	}
 
-	return m.db.SaveSupply(supply, height)
+	return db.SaveSupply(res.Supply, height)
 }

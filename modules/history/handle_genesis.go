@@ -1,23 +1,21 @@
 package history
 
 import (
-	"encoding/json"
+	"time"
 
-	"github.com/rs/zerolog/log"
-	tmtypes "github.com/tendermint/tendermint/types"
+	"github.com/forbole/bdjuno/database"
+	historyutils "github.com/forbole/bdjuno/modules/history/utils"
 )
 
-// HandleGenesis implements modules.GenesisModule
-func (m *Module) HandleGenesis(doc *tmtypes.GenesisDoc, _ map[string]json.RawMessage) error {
-	log.Debug().Str("module", "history").Msg("parsing genesis")
-
-	accounts, err := m.db.GetAccounts()
+// HandleGenesis handles the genesis operations for the history module, storing the initial history data
+func HandleGenesis(genesisTime time.Time, db *database.Db) error {
+	accounts, err := db.GetAccounts()
 	if err != nil {
 		return err
 	}
 
 	for _, account := range accounts {
-		err = m.UpdateAccountBalanceHistoryWithTime(account, doc.GenesisTime)
+		err = historyutils.UpdateAccountBalanceHistoryWithTime(account, genesisTime, db)
 		if err != nil {
 			return err
 		}

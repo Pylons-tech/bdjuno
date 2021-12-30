@@ -1,68 +1,65 @@
 package slashing
 
 import (
-	"fmt"
+	"context"
 
-	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
-	juno "github.com/forbole/juno/v2/types"
+	"github.com/desmos-labs/juno/client"
+
+	slashingutils "github.com/forbole/bdjuno/modules/slashing/utils"
+
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/types"
 
 	"github.com/rs/zerolog/log"
-	abci "github.com/tendermint/tendermint/abci/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
+
+	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 )
 
-// HandleBlock implements BlockModule
-func (m *Module) HandleBlock(
-	block *tmctypes.ResultBlock, results *tmctypes.ResultBlockResults, _ []*juno.Tx, _ *tmctypes.ResultValidators,
-) error {
+// HandleBlock represents a method that is called each time a new block is created
+func HandleBlock(block *tmctypes.ResultBlock, slashingClient slashingtypes.QueryClient, db *database.Db) error {
 	// Update the signing infos
-	err := m.updateSigningInfo(block.Block.Height)
+	err := updateSigningInfo(block.Block.Height, slashingClient, db)
 	if err != nil {
-		return fmt.Errorf("error while updating signing info: %s", err)
+		log.Error().Str("module", "slashing").Int64("height", block.Block.Height).
+			Err(err).Msg("error while updating signing info")
 	}
 
-	// Update the delegations of the slashed validators
-	err = m.updateSlashedDelegations(block.Block.Height, results.BeginBlockEvents)
+	err = updateSlashingParams(block.Block.Height, slashingClient, db)
 	if err != nil {
-		return fmt.Errorf("error while updating slashes: %s", err)
+		log.Error().Str("module", "slashing").Int64("height", block.Block.Height).
+			Err(err).Msg("error while updating params")
 	}
 
 	return nil
 }
 
 // updateSigningInfo reads from the LCD the current staking pool and stores its value inside the database
-func (m *Module) updateSigningInfo(height int64) error {
-	log.Debug().Str("module", "slashing").Int64("height", height).Msg("updating signing info")
+func updateSigningInfo(height int64, slashingClient slashingtypes.QueryClient, db *database.Db) error {
+	log.Debug().Str("module", "slashing").Int64("height", height).
+		Msg("updating signing info")
 
-	signingInfos, err := m.getSigningInfos(height)
+	signingInfos, err := slashingutils.GetSigningInfos(height, slashingClient)
 	if err != nil {
 		return err
 	}
 
-	return m.db.SaveValidatorsSigningInfos(signingInfos)
+	return db.SaveValidatorsSigningInfos(signingInfos)
 }
 
-// updateSlashedDelegations updates all the delegations of the slashed validators
-func (m *Module) updateSlashedDelegations(height int64, beginBlockEvents []abci.Event) error {
-	events := juno.FindEventsByType(beginBlockEvents, slashingtypes.EventTypeSlash)
+// updateSlashingParams gets the slashing params for the given height, and stores them inside the database
+func updateSlashingParams(height int64, slashingClient slashingtypes.QueryClient, db *database.Db) error {
+	log.Debug().Str("module", "slashing").Int64("height", height).
+		Msg("updating slashing params")
 
-	for _, event := range events {
-		addressAttr, err := juno.FindAttributeByKey(event, slashingtypes.AttributeKeyAddress)
-		if err != nil {
-			return err
-		}
-
-		consAddr := string(addressAttr.Value)
-		valOperAddr, err := m.db.GetValidatorOperatorAddress(consAddr)
-		if err != nil {
-			return fmt.Errorf("error while getting validator operator address; make sure the slashing module is listed after the staking module: %s", err)
-		}
-
-		err = m.stakingModule.RefreshValidatorDelegations(height, valOperAddr.String())
-		if err != nil {
-			return fmt.Errorf("error while refreshing validator delegations for validator %s: %s", consAddr, err)
-		}
+	res, err := slashingClient.Params(
+		context.Background(),
+		&slashingtypes.QueryParamsRequest{},
+		client.GetHeightRequestHeader(height),
+	)
+	if err != nil {
+		return err
 	}
 
-	return nil
+	return db.SaveSlashingParams(types.NewSlashingParams(res.Params, height))
 }

@@ -1,16 +1,18 @@
 package history
 
 import (
-	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/forbole/juno/v2/modules"
-	"github.com/forbole/juno/v2/modules/messages"
-	"github.com/forbole/juno/v2/types/config"
+	"encoding/json"
 
-	"github.com/forbole/bdjuno/v2/database"
-)
+	"github.com/cosmos/cosmos-sdk/simapp/params"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/desmos-labs/juno/modules"
+	"github.com/desmos-labs/juno/modules/messages"
+	juno "github.com/desmos-labs/juno/types"
+	"github.com/go-co-op/gocron"
+	tmtypes "github.com/tendermint/tendermint/types"
 
-const (
-	moduleName = "history"
+	"github.com/forbole/bdjuno/database"
+	"github.com/forbole/bdjuno/types"
 )
 
 var (
@@ -22,24 +24,36 @@ var (
 
 // Module represents the module that allows to store historic information
 type Module struct {
-	cfg config.ChainConfig
-	cdc codec.Marshaler
-	db  *database.Db
-
-	getAddresses messages.MessageAddressesParser
+	messagesParser messages.MessageAddressesParser
+	encodingConfig *params.EncodingConfig
+	db             *database.Db
 }
 
 // NewModule allows to build a new Module instance
-func NewModule(cfg config.ChainConfig, messagesParser messages.MessageAddressesParser, cdc codec.Marshaler, db *database.Db) *Module {
+func NewModule(messagesParser messages.MessageAddressesParser, encodingConfig *params.EncodingConfig, db *database.Db) *Module {
 	return &Module{
-		cfg:          cfg,
-		cdc:          cdc,
-		db:           db,
-		getAddresses: messagesParser,
+		messagesParser: messagesParser,
+		encodingConfig: encodingConfig,
+		db:             db,
 	}
 }
 
 // Name implements modules.Module
 func (m *Module) Name() string {
-	return moduleName
+	return types.HistoryModuleName
+}
+
+// RegisterPeriodicOperations implements modules.PeriodicOperationsModule
+func (m *Module) RegisterPeriodicOperations(scheduler *gocron.Scheduler) error {
+	return RegisterPeriodicOps(scheduler, m.db)
+}
+
+// HandleGenesis implements modules.GenesisModule
+func (m *Module) HandleGenesis(doc *tmtypes.GenesisDoc, _ map[string]json.RawMessage) error {
+	return HandleGenesis(doc.GenesisTime, m.db)
+}
+
+// HandleMsg implements modules.MessageModule
+func (m *Module) HandleMsg(_ int, msg sdk.Msg, tx *juno.Tx) error {
+	return HandleMsg(tx, msg, m.messagesParser, m.encodingConfig.Marshaler, m.db)
 }

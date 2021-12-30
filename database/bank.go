@@ -3,14 +3,14 @@ package database
 import (
 	"fmt"
 
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	dbtypes "github.com/forbole/bdjuno/database/types"
 
-	dbutils "github.com/forbole/bdjuno/v2/database/utils"
+	dbutils "github.com/forbole/bdjuno/database/utils"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/lib/pq"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/forbole/bdjuno/types"
 )
 
 // SaveAccountBalances allows to store the given balances inside the database

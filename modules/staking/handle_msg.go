@@ -3,33 +3,44 @@ package staking
 import (
 	"fmt"
 
+	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
+
+	"github.com/forbole/bdjuno/database"
+	stakingutils "github.com/forbole/bdjuno/modules/staking/utils"
+	"github.com/forbole/bdjuno/types"
+
+	"github.com/cosmos/cosmos-sdk/codec"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	juno "github.com/forbole/juno/v2/types"
+	juno "github.com/desmos-labs/juno/types"
 )
 
-// HandleMsg implements MessageModule
-func (m *Module) HandleMsg(index int, msg sdk.Msg, tx *juno.Tx) error {
+// HandleMsg allows to handle the different utils related to the staking module
+func HandleMsg(
+	tx *juno.Tx, index int, msg sdk.Msg,
+	stakingClient stakingtypes.QueryClient, distrClient distrtypes.QueryClient,
+	cdc codec.Codec, db *database.Db,
+) error {
 	if len(tx.Logs) == 0 {
 		return nil
 	}
 
 	switch cosmosMsg := msg.(type) {
 	case *stakingtypes.MsgCreateValidator:
-		return m.handleMsgCreateValidator(tx.Height, cosmosMsg)
+		return handleMsgCreateValidator(tx.Height, cosmosMsg, cdc, db)
 
 	case *stakingtypes.MsgEditValidator:
-		return m.handleEditValidator(tx.Height, cosmosMsg)
+		return handleEditValidator(tx.Height, cosmosMsg, db)
 
 	case *stakingtypes.MsgDelegate:
-		return m.storeDelegationFromMessage(tx.Height, cosmosMsg)
+		return stakingutils.StoreDelegationFromMessage(tx.Height, cosmosMsg, stakingClient, db)
 
 	case *stakingtypes.MsgBeginRedelegate:
-		return m.handleMsgBeginRedelegate(tx, index, cosmosMsg)
+		return handleMsgBeginRedelegate(tx, index, cosmosMsg, stakingClient, distrClient, db)
 
 	case *stakingtypes.MsgUndelegate:
-		return m.handleMsgUndelegate(tx, index, cosmosMsg)
+		return handleMsgUndelegate(tx, index, cosmosMsg, stakingClient, distrClient, db)
 	}
 
 	return nil
@@ -39,51 +50,94 @@ func (m *Module) HandleMsg(index int, msg sdk.Msg, tx *juno.Tx) error {
 
 // handleMsgCreateValidator handles properly a MsgCreateValidator instance by
 // saving into the database all the data associated to such validator
-func (m *Module) handleMsgCreateValidator(height int64, msg *stakingtypes.MsgCreateValidator) error {
-	err := m.RefreshValidatorInfos(height, msg.ValidatorAddress)
+func handleMsgCreateValidator(
+	height int64, msg *stakingtypes.MsgCreateValidator, cdc codec.Codec, db *database.Db,
+) error {
+	err := stakingutils.StoreValidatorFromMsgCreateValidator(height, msg, cdc, db)
 	if err != nil {
-		return fmt.Errorf("error while refreshing validator from MsgCreateValidator: %s", err)
+		return fmt.Errorf("error while storing validator from MsgCreateValidator: %s", err)
 	}
 
-	// Get the first self delegation
-	delegations, err := m.getValidatorDelegations(height, msg.ValidatorAddress)
+	// Save validator description
+	description, err := stakingutils.ConvertValidatorDescription(
+		msg.ValidatorAddress,
+		msg.Description,
+		height,
+	)
 	if err != nil {
-		return nil
+		return fmt.Errorf("error while converting validator description: %s", err)
 	}
 
-	return m.db.SaveDelegations(delegations)
+	err = db.SaveValidatorDescription(description)
+	if err != nil {
+		return err
+	}
+
+	// Save validator commission
+	return db.SaveValidatorCommission(types.NewValidatorCommission(
+		msg.ValidatorAddress,
+		&msg.Commission.Rate,
+		&msg.MinSelfDelegation,
+		height,
+	))
 }
 
 // handleEditValidator handles MsgEditValidator utils, updating the validator info and commission
-func (m *Module) handleEditValidator(height int64, msg *stakingtypes.MsgEditValidator) error {
-	err := m.RefreshValidatorInfos(height, msg.ValidatorAddress)
+func handleEditValidator(
+	height int64, msg *stakingtypes.MsgEditValidator, db *database.Db,
+) error {
+	// Save validator commission
+	err := db.SaveValidatorCommission(types.NewValidatorCommission(
+		msg.ValidatorAddress,
+		msg.CommissionRate,
+		msg.MinSelfDelegation,
+		height,
+	))
 	if err != nil {
-		return fmt.Errorf("error while refreshing validator from MsgEditValidator: %s", err)
+		return err
 	}
 
-	return nil
+	// Save validator description
+	desc, err := stakingutils.ConvertValidatorDescription(
+		msg.ValidatorAddress,
+		msg.Description,
+		height,
+	)
+	if err != nil {
+		return fmt.Errorf("error while converting validator description: %s", err)
+	}
+
+	return db.SaveValidatorDescription(desc)
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
 
 // handleMsgBeginRedelegate handles a MsgBeginRedelegate storing the data inside the database
-func (m *Module) handleMsgBeginRedelegate(tx *juno.Tx, index int, msg *stakingtypes.MsgBeginRedelegate) error {
-	_, err := m.storeRedelegationFromMessage(tx, index, msg)
+func handleMsgBeginRedelegate(
+	tx *juno.Tx, index int, msg *stakingtypes.MsgBeginRedelegate,
+	stakingClient stakingtypes.QueryClient, distrClient distrtypes.QueryClient,
+	db *database.Db,
+) error {
+	_, err := stakingutils.StoreRedelegationFromMessage(tx, index, msg, db)
 	if err != nil {
 		return fmt.Errorf("error while storing redelegation from message: %s", err)
 	}
 
 	// Update the current delegations
-	return m.refreshDelegatorDelegations(tx.Height, msg.DelegatorAddress)
+	return stakingutils.RefreshDelegations(tx.Height, msg.DelegatorAddress, stakingClient, distrClient, db)
 }
 
 // handleMsgUndelegate handles a MsgUndelegate storing the data inside the database
-func (m *Module) handleMsgUndelegate(tx *juno.Tx, index int, msg *stakingtypes.MsgUndelegate) error {
-	_, err := m.storeUnbondingDelegationFromMessage(tx, index, msg)
+func handleMsgUndelegate(
+	tx *juno.Tx, index int, msg *stakingtypes.MsgUndelegate,
+	stakingClient stakingtypes.QueryClient, distrClient distrtypes.QueryClient,
+	db *database.Db,
+) error {
+	_, err := stakingutils.StoreUnbondingDelegationFromMessage(tx, index, msg, db)
 	if err != nil {
 		return fmt.Errorf("error while storing unbonding delegation from message: %s", err)
 	}
 
 	// Update the current delegations
-	return m.refreshDelegatorDelegations(tx.Height, msg.DelegatorAddress)
+	return stakingutils.RefreshDelegations(tx.Height, msg.DelegatorAddress, stakingClient, distrClient, db)
 }
