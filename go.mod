@@ -1,4 +1,4 @@
-module github.com/forbole/bdjuno
+module github.com/pylons-tech/bdjuno
 
 go 1.15
 
@@ -17,6 +17,7 @@ require (
 	github.com/tendermint/tendermint v0.34.13
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	google.golang.org/grpc v1.40.0
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
