@@ -7,11 +7,9 @@ import (
 	"github.com/desmos-labs/juno/cmd"
 	parsecmd "github.com/desmos-labs/juno/cmd/parse"
 	"github.com/desmos-labs/juno/modules/messages"
-
-	"github.com/forbole/bdjuno/types/config"
-
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules"
+	"github.com/pylons-tech/bdjuno/types/config"
 )
 
 func main() {
