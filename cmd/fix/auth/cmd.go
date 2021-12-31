@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"github.com/forbole/juno/v2/cmd/parse"
+	"github.com/desmos-labs/juno/cmd/parse"
 	"github.com/spf13/cobra"
 )
 

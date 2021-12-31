@@ -13,10 +13,10 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/types"
 
-	"github.com/forbole/bdjuno/database"
-	govutils "github.com/forbole/bdjuno/modules/gov/utils"
+	"github.com/pylons-tech/bdjuno/database"
+	govutils "github.com/pylons-tech/bdjuno/modules/gov/utils"
 )
 
 // HandleBlock handles a new block by updating any eventually open proposal's status and tally result

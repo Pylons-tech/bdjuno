@@ -3,7 +3,7 @@ package slashing
 import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	"github.com/desmos-labs/juno/modules"
 	"github.com/desmos-labs/juno/types"

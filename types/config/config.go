@@ -4,7 +4,7 @@ import (
 	juno "github.com/desmos-labs/juno/types"
 	"github.com/pelletier/go-toml"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 var _ juno.Config = &Config{}

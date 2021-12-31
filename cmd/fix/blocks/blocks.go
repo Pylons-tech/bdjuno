@@ -3,10 +3,10 @@ package blocks
 import (
 	"fmt"
 
-	"github.com/forbole/juno/v2/cmd/parse"
+	"github.com/desmos-labs/juno/cmd/parse"
 
-	"github.com/forbole/juno/v2/parser"
-	"github.com/forbole/juno/v2/types/config"
+	"github.com/pylons-tech/bdjuno/parser"
+	"github.com/pylons-tech/bdjuno/types/config"
 	"github.com/spf13/cobra"
 )
 

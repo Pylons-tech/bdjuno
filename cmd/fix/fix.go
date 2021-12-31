@@ -1,13 +1,13 @@
 package fix
 
 import (
-	"github.com/forbole/juno/v2/cmd/parse"
+	"github.com/desmos-labs/juno/cmd/parse"
 	"github.com/spf13/cobra"
 
-	fixauth "github.com/forbole/bdjuno/v2/cmd/fix/auth"
-	fixblocks "github.com/forbole/bdjuno/v2/cmd/fix/blocks"
-	fixgov "github.com/forbole/bdjuno/v2/cmd/fix/gov"
-	fixstaking "github.com/forbole/bdjuno/v2/cmd/fix/staking"
+	fixauth "github.com/pylons-tech/bdjuno/cmd/fix/auth"
+	fixblocks "github.com/pylons-tech/bdjuno/cmd/fix/blocks"
+	fixgov "github.com/pylons-tech/bdjuno/cmd/fix/gov"
+	fixstaking "github.com/pylons-tech/bdjuno/cmd/fix/staking"
 )
 
 // NewFixCmd returns the Cobra command allowing to fix some BDJuno bugs without having to re-sync the whole database

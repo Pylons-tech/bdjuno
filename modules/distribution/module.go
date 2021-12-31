@@ -7,9 +7,9 @@ import (
 
 	"github.com/desmos-labs/juno/modules"
 	"github.com/desmos-labs/juno/types"
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types/config"
 	"github.com/go-co-op/gocron"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/types/config"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 )
 

@@ -6,9 +6,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/forbole/juno/v2/node/local"
+	"github.com/pylons-tech/bdjuno/node/local"
 
-	stakingsource "github.com/forbole/bdjuno/v2/modules/staking/source"
+	stakingsource "github.com/pylons-tech/bdjuno/modules/staking/source"
 )
 
 var (

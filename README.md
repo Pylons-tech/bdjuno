@@ -1,7 +1,7 @@
 # BDJuno
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/forbole/bdjuno/Tests)](https://github.com/forbole/bdjuno/actions?query=workflow%3ATests)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pylons-tech/bdjuno/Tests)](https://github.com/pylons-tech/bdjuno/actions?query=workflow%3ATests)
 [![Go Report Card](https://goreportcard.com/badge/github.com/forbole/bdjuno)](https://goreportcard.com/report/github.com/forbole/bdjuno)
-![Codecov branch](https://img.shields.io/codecov/c/github/forbole/bdjuno/cosmos/v0.43.x)
+![Codecov branch](https://img.shields.io/codecov/c/github/pylons-tech/bdjuno/cosmos/v0.43.x)
 
 BDJuno (shorthand for BigDipper Juno) is the [Juno](https://github.com/desmos-labs/juno) implementation
 for [BigDipper](https://github.com/forbole/big-dipper).

@@ -3,13 +3,13 @@ package staking
 import (
 	"fmt"
 
-	"github.com/forbole/juno/v2/cmd/parse"
-	"github.com/forbole/juno/v2/types/config"
+	"github.com/desmos-labs/juno/cmd/parse"
+	"github.com/pylons-tech/bdjuno/types/config"
 	"github.com/spf13/cobra"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
-	"github.com/forbole/bdjuno/v2/modules/staking"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules"
+	"github.com/pylons-tech/bdjuno/modules/staking"
 )
 
 // validatorsCmd returns a Cobra command that allows to fix the validator infos for all validators.

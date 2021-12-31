@@ -4,15 +4,15 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/forbole/juno/v2/cmd/parse"
-	"github.com/forbole/juno/v2/types/config"
+	"github.com/desmos-labs/juno/cmd/parse"
+	"github.com/pylons-tech/bdjuno/modules"
+	"github.com/pylons-tech/bdjuno/types/config"
 	"github.com/spf13/cobra"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
-	"github.com/forbole/bdjuno/v2/modules/gov"
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/pylons-tech/bdjuno/database"
+
+	"github.com/pylons-tech/bdjuno/modules/gov"
+	"github.com/pylons-tech/bdjuno/utils"
 )
 
 // proposalCmd returns the Cobra command allowing to fix all things related to a proposal
