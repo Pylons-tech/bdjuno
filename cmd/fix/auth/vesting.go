@@ -6,11 +6,13 @@ import (
 
 	"github.com/forbole/juno/v2/cmd/parse"
 	"github.com/forbole/juno/v2/types/config"
+
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/utils"
+
 	"github.com/spf13/cobra"
 
-	"github.com/forbole/bdjuno/v2/database"
-	authutils "github.com/forbole/bdjuno/v2/modules/auth"
-	"github.com/forbole/bdjuno/v2/utils"
+	authutils "github.com/pylons-tech/bdjuno/modules/auth"
 )
 
 // vestingCmd returns a Cobra command that allows to fix the vesting data for the accounts
