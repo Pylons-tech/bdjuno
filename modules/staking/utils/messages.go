@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	juno "github.com/desmos-labs/juno/types"
+	juno "github.com/pylons-tech/juno/types"
 )
 
 // StoreValidatorFromMsgCreateValidator handles properly a MsgCreateValidator instance by

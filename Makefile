@@ -16,8 +16,8 @@ all: lint build test-unit
 ###                                Build flags                              ###
 ###############################################################################
 
-LD_FLAGS = -X github.com/desmos-labs/juno/version.Version=$(VERSION) \
-	-X github.com/desmos-labs/juno/version.Commit=$(COMMIT)
+LD_FLAGS = -X github.com/pylons-tech/juno/version.Version=$(VERSION) \
+	-X github.com/pylons-tech/juno/version.Commit=$(COMMIT)
 
 BUILD_FLAGS := -ldflags '$(LD_FLAGS)'
 
@@ -73,7 +73,7 @@ lint-fix:
 format:
 	find . -name '*.go' -type f -not -path "*.git*" | xargs gofmt -w -s
 	find . -name '*.go' -type f -not -path "*.git*" | xargs misspell -w
-	find . -name '*.go' -type f -not -path "*.git*" | xargs goimports -w -local github.com/forbole/bdjuno
+	find . -name '*.go' -type f -not -path "*.git*" | xargs goimports -w -local github.com/pylons-tech/bdjuno
 .PHONY: format
 
 clean:

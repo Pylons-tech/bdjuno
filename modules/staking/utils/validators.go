@@ -4,14 +4,14 @@ import (
 	"context"
 	"fmt"
 
-	juno "github.com/desmos-labs/juno/types"
+	juno "github.com/pylons-tech/juno/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules/staking/keybase"
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules/staking/keybase"
+	"github.com/pylons-tech/bdjuno/types"
 
 	"github.com/rs/zerolog/log"
 

@@ -5,15 +5,15 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/desmos-labs/juno/modules"
-	juno "github.com/desmos-labs/juno/types"
+	"github.com/pylons-tech/juno/modules"
+	juno "github.com/pylons-tech/juno/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )

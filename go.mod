@@ -12,7 +12,7 @@ require (
 	github.com/lib/pq v1.10.2
 	github.com/pelletier/go-toml v1.9.3
 	github.com/proullon/ramsql v0.0.0-20181213202341-817cee58a244
-	github.com/pylons-tech/juno v0.0.0-20220103191923-9d5d1c1908f6
+
 	github.com/rs/zerolog v1.23.0
 	github.com/stretchr/testify v1.7.0
 	github.com/tendermint/tendermint v0.34.13

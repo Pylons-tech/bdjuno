@@ -7,13 +7,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	"github.com/desmos-labs/juno/client"
-	juno "github.com/desmos-labs/juno/types"
+	"github.com/pylons-tech/juno/client"
+	juno "github.com/pylons-tech/juno/types"
 
-	bankutils "github.com/forbole/bdjuno/modules/bank/utils"
+	bankutils "github.com/pylons-tech/bdjuno/modules/bank/utils"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules/distribution/utils"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules/distribution/utils"
 )
 
 // HandleMsg allows to handle the different utils related to the distribution module

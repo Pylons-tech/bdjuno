@@ -8,16 +8,16 @@ import (
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	"google.golang.org/grpc/codes"
 
-	distrutils "github.com/forbole/bdjuno/modules/distribution/utils"
+	distrutils "github.com/pylons-tech/bdjuno/modules/distribution/utils"
 
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 
 	"github.com/cosmos/cosmos-sdk/types/query"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 const (

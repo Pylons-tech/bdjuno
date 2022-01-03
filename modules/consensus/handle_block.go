@@ -5,7 +5,7 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 )

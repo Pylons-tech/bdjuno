@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 // GetCoinsList allows to fetch from the remote APIs the list of all the supported tokens

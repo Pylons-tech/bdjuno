@@ -2,12 +2,12 @@ package mint
 
 import (
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
-	"github.com/desmos-labs/juno/modules"
-	juno "github.com/desmos-labs/juno/types"
 	"github.com/go-co-op/gocron"
+	"github.com/pylons-tech/juno/modules"
+	juno "github.com/pylons-tech/juno/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 )
 
 var (

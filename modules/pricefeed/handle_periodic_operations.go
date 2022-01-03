@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"strings"
 
-	juno "github.com/desmos-labs/juno/types"
+	juno "github.com/pylons-tech/juno/types"
 
-	historyutils "github.com/forbole/bdjuno/modules/history/utils"
-	"github.com/forbole/bdjuno/types"
+	historyutils "github.com/pylons-tech/bdjuno/modules/history/utils"
+	"github.com/pylons-tech/bdjuno/types"
 
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules/pricefeed/coingecko"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules/pricefeed/coingecko"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // RegisterPeriodicOps returns the AdditionalOperation that periodically runs fetches from

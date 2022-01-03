@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 func GetStakingPool(height int64, stakingClient stakingtypes.QueryClient) (*types.Pool, error) {

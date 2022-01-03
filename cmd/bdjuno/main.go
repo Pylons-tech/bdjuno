@@ -4,14 +4,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	ibc "github.com/cosmos/ibc-go/modules/core"
-	"github.com/desmos-labs/juno/cmd"
-	parsecmd "github.com/desmos-labs/juno/cmd/parse"
-	"github.com/desmos-labs/juno/modules/messages"
+	"github.com/pylons-tech/juno/cmd"
+	parsecmd "github.com/pylons-tech/juno/cmd/parse"
+	"github.com/pylons-tech/juno/modules/messages"
 
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/pylons-tech/bdjuno/types/config"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules"
 )
 
 func main() {
