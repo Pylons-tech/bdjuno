@@ -5,7 +5,7 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 // UpdateParams gets the slashing params for the given height, and stores them inside the database

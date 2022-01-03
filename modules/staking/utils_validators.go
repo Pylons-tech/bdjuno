@@ -3,11 +3,11 @@ package staking
 import (
 	"fmt"
 
-	juno "github.com/forbole/juno/v2/types"
+	juno "github.com/pylons-tech/juno/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/forbole/bdjuno/v2/modules/staking/keybase"
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/pylons-tech/bdjuno/modules/staking/keybase"
+	"github.com/pylons-tech/bdjuno/types"
 
 	"github.com/rs/zerolog/log"
 

@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"time"
 
-	juno "github.com/desmos-labs/juno/types"
+	juno "github.com/pylons-tech/juno/types"
 
 	"github.com/gogo/protobuf/proto"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/desmos-labs/juno/modules/messages"
+	"github.com/pylons-tech/juno/modules/messages"
 
-	"github.com/forbole/bdjuno/database"
-	historyutils "github.com/forbole/bdjuno/modules/history/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/pylons-tech/bdjuno/database"
+	historyutils "github.com/pylons-tech/bdjuno/modules/history/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // HandleMsg handles any message updating the involved accounts

@@ -3,14 +3,14 @@ package auth
 import (
 	"encoding/json"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authttypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	"github.com/desmos-labs/juno/modules"
-	"github.com/desmos-labs/juno/modules/messages"
-	juno "github.com/desmos-labs/juno/types"
+	"github.com/pylons-tech/juno/modules"
+	"github.com/pylons-tech/juno/modules/messages"
+	juno "github.com/pylons-tech/juno/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )
 

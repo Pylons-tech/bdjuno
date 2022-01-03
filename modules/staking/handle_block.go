@@ -10,24 +10,24 @@ import (
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	bankutils "github.com/forbole/bdjuno/modules/bank/utils"
-	historyutils "github.com/forbole/bdjuno/modules/history/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	bankutils "github.com/pylons-tech/bdjuno/modules/bank/utils"
+	historyutils "github.com/pylons-tech/bdjuno/modules/history/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	juno "github.com/desmos-labs/juno/types"
+	juno "github.com/pylons-tech/juno/types"
 
 	"github.com/rs/zerolog/log"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	stakingutils "github.com/forbole/bdjuno/modules/staking/utils"
+	stakingutils "github.com/pylons-tech/bdjuno/modules/staking/utils"
 )
 
 // HandleBlock represents a method that is called each time a new block is created

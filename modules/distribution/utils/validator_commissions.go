@@ -4,13 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/types"
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/pylons-tech/bdjuno/types/config"
 	"github.com/rs/zerolog/log"
 )
 

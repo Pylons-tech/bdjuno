@@ -6,17 +6,17 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/desmos-labs/juno/client"
+	"github.com/pylons-tech/juno/client"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	stakingutils "github.com/forbole/bdjuno/modules/staking/utils"
+	stakingutils "github.com/pylons-tech/bdjuno/modules/staking/utils"
 
 	"google.golang.org/grpc/codes"
 
-	"github.com/forbole/bdjuno/database"
-	authutils "github.com/forbole/bdjuno/modules/auth/utils"
-	bankutils "github.com/forbole/bdjuno/modules/bank/utils"
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/database"
+	authutils "github.com/pylons-tech/bdjuno/modules/auth/utils"
+	bankutils "github.com/pylons-tech/bdjuno/modules/bank/utils"
+	"github.com/pylons-tech/bdjuno/types"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
