@@ -177,7 +177,7 @@ func (m *Module) GetValidatorsStatuses(height int64, validators []stakingtypes.V
 		}
 
 		valSigningInfo, err := m.slashingModule.GetSigningInfo(height, consAddr)
-		if err != nil && !strings.Contains(err.Error(), codes.NotFound.String()) {
+		if err != nil {
 			return nil, fmt.Errorf("error while getting validator signing info: %s", err)
 		}
 
