@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
-	dbtypes "github.com/forbole/bdjuno/database/types"
+	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	bddbtypes "github.com/forbole/bdjuno/database/types"
+	bddbtypes "github.com/forbole/bdjuno/v2/database/types"
 )
 
 func (suite *DbTestSuite) TestDelegations() {
@@ -337,7 +337,7 @@ func (suite *DbTestSuite) TestDeleteCompletedRedelegations() {
 			srcValidator1.GetOperator(),
 			dstValidator1.GetOperator(),
 			sdk.NewCoin("cosmos", sdk.NewInt(100)),
-			time.Date(2021, 1, 1, 12, 00, 01, 000, time.UTC),
+			time.Date(2021, 1, 1, 12, 00, 00, 000, time.UTC),
 			10,
 		),
 		types.NewRedelegation(
@@ -370,10 +370,8 @@ func (suite *DbTestSuite) TestDeleteCompletedRedelegations() {
 
 	// Delete the data
 	timestamp := time.Date(2021, 1, 1, 12, 00, 01, 000, time.UTC)
-	deleted, err := suite.database.DeleteCompletedRedelegations(timestamp)
+	err = suite.database.DeleteCompletedRedelegations(timestamp)
 	suite.Require().NoError(err)
-	suite.Require().Len(deleted, 1)
-	suite.Require().True(reDelegations[0].Equal(deleted[0]))
 
 	var count int
 	err = suite.database.Sql.QueryRow(`SELECT COUNT(*) FRom redelegation`).Scan(&count)
@@ -537,7 +535,7 @@ func (suite *DbTestSuite) TestDeleteCompletedUnbondingDelegations() {
 			delegator1.String(),
 			validator1.GetOperator(),
 			sdk.NewCoin("cosmos", sdk.NewInt(100)),
-			time.Date(2021, 1, 1, 12, 00, 01, 000, time.UTC),
+			time.Date(2021, 1, 1, 12, 00, 00, 000, time.UTC),
 			10,
 		),
 		types.NewUnbondingDelegation(
@@ -567,8 +565,6 @@ func (suite *DbTestSuite) TestDeleteCompletedUnbondingDelegations() {
 
 	// Delete the data
 	timestamp := time.Date(2021, 1, 1, 12, 00, 01, 000, time.UTC)
-	deleted, err := suite.database.DeleteCompletedUnbondingDelegations(timestamp)
+	err = suite.database.DeleteCompletedUnbondingDelegations(timestamp)
 	suite.Require().NoError(err)
-	suite.Require().Len(deleted, 1)
-	suite.Require().True(unbondingDelegations[0].Equal(deleted[0]))
 }

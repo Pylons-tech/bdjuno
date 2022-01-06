@@ -1,5 +1,10 @@
+.idea/
+build/
 
-node_modules
-.DS_Store
-config/config.toml
-config/config.yaml
+# Configuration
+*.toml
+*.json
+config.yaml
+
+# Coverage
+coverage.*

@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	dbtypes "github.com/forbole/bdjuno/database/types"
+	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/lib/pq"
@@ -32,7 +32,7 @@ WHERE community_pool.height <= excluded.height`
 // -------------------------------------------------------------------------------------------------------------------
 
 // SaveDistributionParams allows to store the given distribution parameters inside the database
-func (db *Db) SaveDistributionParams(params types.DistributionParams) error {
+func (db *Db) SaveDistributionParams(params *types.DistributionParams) error {
 	paramsBz, err := json.Marshal(&params.Params)
 	if err != nil {
 		return fmt.Errorf("error while marshaling params: %s", err)

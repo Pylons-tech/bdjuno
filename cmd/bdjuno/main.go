@@ -3,21 +3,24 @@ package main
 import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	ibc "github.com/cosmos/ibc-go/modules/core"
-	"github.com/desmos-labs/juno/cmd"
-	parsecmd "github.com/desmos-labs/juno/cmd/parse"
-	"github.com/desmos-labs/juno/modules/messages"
+	"github.com/forbole/juno/v2/cmd"
+	initcmd "github.com/forbole/juno/v2/cmd/init"
+	parsecmd "github.com/forbole/juno/v2/cmd/parse"
+	"github.com/forbole/juno/v2/modules/messages"
 
-	"github.com/forbole/bdjuno/types/config"
+	fixcmd "github.com/forbole/bdjuno/v2/cmd/fix"
+	migratecmd "github.com/forbole/bdjuno/v2/cmd/migrate"
+	parsegenesiscmd "github.com/forbole/bdjuno/v2/cmd/parse-genesis"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules"
+	"github.com/forbole/bdjuno/v2/types/config"
+
+	"github.com/forbole/bdjuno/v2/database"
+	"github.com/forbole/bdjuno/v2/modules"
 )
 
 func main() {
 	parseCfg := parsecmd.NewConfig().
 		WithDBBuilder(database.Builder).
-		WithConfigParser(config.Parser).
 		WithEncodingConfigBuilder(config.MakeEncodingConfig(getBasicManagers())).
 		WithRegistrar(modules.NewRegistrar(getAddressesParser()))
 
@@ -25,7 +28,18 @@ func main() {
 		WithParseConfig(parseCfg)
 
 	// Run the command
-	executor := cmd.BuildDefaultExecutor(cfg)
+	rootCmd := cmd.RootCmd(cfg.GetName())
+
+	rootCmd.AddCommand(
+		cmd.VersionCmd(),
+		initcmd.InitCmd(cfg.GetInitConfig()),
+		parsecmd.ParseCmd(cfg.GetParseConfig()),
+		migratecmd.NewMigrateCmd(),
+		fixcmd.NewFixCmd(cfg.GetParseConfig()),
+		parsegenesiscmd.NewParseGenesisCmd(cfg.GetParseConfig()),
+	)
+
+	executor := cmd.PrepareRootCmd(cfg.GetName(), rootCmd)
 	err := executor.Execute()
 	if err != nil {
 		panic(err)
@@ -38,9 +52,6 @@ func main() {
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
 		simapp.ModuleBasics,
-		module.NewBasicManager(
-			ibc.AppModule{},
-		),
 	}
 }
 
