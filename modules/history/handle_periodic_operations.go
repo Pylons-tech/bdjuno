@@ -4,7 +4,7 @@ import (
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/v2/modules/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // RegisterPeriodicOperations implements modules.PeriodicOperationsModule

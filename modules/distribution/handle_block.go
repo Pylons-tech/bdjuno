@@ -1,7 +1,7 @@
 package distribution
 
 import (
-	juno "github.com/forbole/juno/v2/types"
+	juno "github.com/pylons-tech/juno/types"
 
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 )

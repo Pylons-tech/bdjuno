@@ -1,7 +1,7 @@
 package bank
 
 import (
-	"github.com/forbole/juno/v2/types"
+	"github.com/pylons-tech/juno/types"
 
 	"github.com/rs/zerolog/log"
 

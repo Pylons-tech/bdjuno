@@ -2,13 +2,13 @@ package distribution
 
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/forbole/juno/v2/types/config"
+	"github.com/pylons-tech/juno/types/config"
 
-	distrsource "github.com/forbole/bdjuno/v2/modules/distribution/source"
+	distrsource "github.com/pylons-tech/bdjuno/modules/distribution/source"
 
-	"github.com/forbole/juno/v2/modules"
+	"github.com/pylons-tech/juno/modules"
 
-	"github.com/forbole/bdjuno/v2/database"
+	"github.com/pylons-tech/bdjuno/database"
 )
 
 var (

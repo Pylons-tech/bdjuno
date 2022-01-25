@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
-	juno "github.com/forbole/juno/v2/types"
+	juno "github.com/pylons-tech/juno/types"
 
 	"github.com/rs/zerolog/log"
 	abci "github.com/tendermint/tendermint/abci/types"

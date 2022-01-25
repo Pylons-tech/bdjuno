@@ -2,10 +2,10 @@ package auth
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	juno "github.com/forbole/juno/v2/types"
+	juno "github.com/pylons-tech/juno/types"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/v2/modules/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // HandleMsg implements modules.MessageModule

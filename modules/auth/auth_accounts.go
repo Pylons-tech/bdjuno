@@ -51,5 +51,6 @@ func GetAccounts(height int64, addresses []string) []types.Account {
 // retrieving the account data and stores it inside the database.
 func (m *Module) RefreshAccounts(height int64, addresses []string) error {
 	accounts := GetAccounts(height, addresses)
+	m.db.SaveAccounts(accounts)
 	return m.db.SaveAccounts(accounts)
 }
