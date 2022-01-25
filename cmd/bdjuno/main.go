@@ -1,21 +1,22 @@
 package main
 
 import (
+	//Cosmos SDK modules
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/forbole/juno/v2/cmd"
-	initcmd "github.com/forbole/juno/v2/cmd/init"
-	parsecmd "github.com/forbole/juno/v2/cmd/parse"
-	"github.com/forbole/juno/v2/modules/messages"
 
-	fixcmd "github.com/forbole/bdjuno/v2/cmd/fix"
-	migratecmd "github.com/forbole/bdjuno/v2/cmd/migrate"
-	parsegenesiscmd "github.com/forbole/bdjuno/v2/cmd/parse-genesis"
+	"github.com/pylons-tech/juno/cmd"
+	initcmd "github.com/pylons-tech/juno/cmd/init"
+	parsecmd "github.com/pylons-tech/juno/cmd/parse"
+	"github.com/pylons-tech/juno/modules/messages"
 
-	"github.com/forbole/bdjuno/v2/types/config"
+	fixcmd "github.com/pylons-tech/bdjuno/cmd/fix"
+	migratecmd "github.com/pylons-tech/bdjuno/cmd/migrate"
+	parsegenesiscmd "github.com/pylons-tech/bdjuno/cmd/parse-genesis"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules"
+	"github.com/pylons-tech/bdjuno/types/config"
 )
 
 func main() {

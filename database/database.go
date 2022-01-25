@@ -3,9 +3,9 @@ package database
 import (
 	"fmt"
 
-	db "github.com/forbole/juno/v2/database"
-	"github.com/forbole/juno/v2/database/postgresql"
 	"github.com/jmoiron/sqlx"
+	db "github.com/pylons-tech/juno/database"
+	"github.com/pylons-tech/juno/database/postgresql"
 )
 
 var _ db.Database = &Db{}
