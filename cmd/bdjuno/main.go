@@ -1,22 +1,21 @@
 package main
 
 import (
+	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/forbole/juno/v2/cmd"
 	initcmd "github.com/forbole/juno/v2/cmd/init"
 	parsecmd "github.com/forbole/juno/v2/cmd/parse"
 	"github.com/forbole/juno/v2/modules/messages"
 
-	fixcmd "github.com/forbole/bdjuno/v2/cmd/fix"
-	migratecmd "github.com/forbole/bdjuno/v2/cmd/migrate"
-	parsegenesiscmd "github.com/forbole/bdjuno/v2/cmd/parse-genesis"
+	fixcmd "github.com/pylons-tech/bdjuno/cmd/fix"
+	migratecmd "github.com/pylons-tech/bdjuno/cmd/migrate"
+	parsegenesiscmd "github.com/pylons-tech/bdjuno/cmd/parse-genesis"
 
-	"github.com/forbole/bdjuno/v2/types/config"
+	"github.com/pylons-tech/bdjuno/types/config"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
-
-	gaiaapp "github.com/cosmos/gaia/v6/app"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules"
 )
 
 func main() {
@@ -52,7 +51,7 @@ func main() {
 // This should be edited by custom implementations if needed.
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
-		gaiaapp.ModuleBasics,
+		simapp.ModuleBasics,
 	}
 }
 

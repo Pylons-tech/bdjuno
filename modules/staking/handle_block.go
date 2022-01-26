@@ -7,7 +7,7 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/pylons-tech/bdjuno/types"
 
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	juno "github.com/forbole/juno/v2/types"

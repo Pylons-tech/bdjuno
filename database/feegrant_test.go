@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	feegranttypes "github.com/cosmos/cosmos-sdk/x/feegrant"
 
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
-	"github.com/forbole/bdjuno/v2/types"
+	dbtypes "github.com/pylons-tech/bdjuno/database/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 func (suite *DbTestSuite) TestBigDipperDb_SaveFeeGrantAllowance() {

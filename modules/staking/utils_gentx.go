@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/forbole/bdjuno/v2/modules/staking/keybase"
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/pylons-tech/bdjuno/modules/staking/keybase"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 // StoreValidatorFromMsgCreateValidator handles properly a MsgCreateValidator instance by

@@ -4,13 +4,13 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/forbole/bdjuno/v2/modules/feegrant"
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/pylons-tech/bdjuno/modules/feegrant"
+	"github.com/pylons-tech/bdjuno/utils"
 
 	"github.com/forbole/juno/v2/cmd/parse"
 	"github.com/spf13/cobra"
 
-	"github.com/forbole/bdjuno/v2/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	"sort"
 

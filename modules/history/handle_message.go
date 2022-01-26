@@ -10,7 +10,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/forbole/bdjuno/v2/modules/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // HandleMsg implements modules.MessageModule

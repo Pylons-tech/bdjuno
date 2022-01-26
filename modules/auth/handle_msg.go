@@ -6,7 +6,7 @@ import (
 	"github.com/gogo/protobuf/proto"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/v2/modules/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // HandleMsg implements modules.MessageModule
