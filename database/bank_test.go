@@ -3,11 +3,11 @@ package database_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	dbtypes "github.com/pylons-tech/bdjuno/database/types"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/pylons-tech/bdjuno/types"
 
-	bddbtypes "github.com/forbole/bdjuno/v2/database/types"
+	bddbtypes "github.com/pylons-tech/bdjuno/database/types"
 )
 
 func (suite *DbTestSuite) TestSaveAccountBalance() {
