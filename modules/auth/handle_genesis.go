@@ -6,11 +6,11 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 
-	authutils "github.com/forbole/bdjuno/modules/auth/utils"
+	authutils "github.com/pylons-tech/bdjuno/modules/auth/utils"
 )
 
 // Handler handles the genesis state of the x/auth module in order to store the initial values

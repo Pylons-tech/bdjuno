@@ -3,7 +3,7 @@ package consensus
 import (
 	"encoding/json"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	"github.com/desmos-labs/juno/client"
 	"github.com/desmos-labs/juno/modules"

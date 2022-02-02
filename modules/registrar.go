@@ -17,23 +17,23 @@ import (
 	"github.com/desmos-labs/juno/modules/messages"
 	"github.com/desmos-labs/juno/modules/registrar"
 
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/pylons-tech/bdjuno/types/config"
 
-	"github.com/forbole/bdjuno/utils"
+	"github.com/pylons-tech/bdjuno/utils"
 
-	"github.com/forbole/bdjuno/modules/history"
+	"github.com/pylons-tech/bdjuno/modules/history"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules/auth"
-	"github.com/forbole/bdjuno/modules/bank"
-	"github.com/forbole/bdjuno/modules/consensus"
-	"github.com/forbole/bdjuno/modules/distribution"
-	"github.com/forbole/bdjuno/modules/gov"
-	"github.com/forbole/bdjuno/modules/mint"
-	"github.com/forbole/bdjuno/modules/modules"
-	"github.com/forbole/bdjuno/modules/pricefeed"
-	"github.com/forbole/bdjuno/modules/slashing"
-	"github.com/forbole/bdjuno/modules/staking"
+	"github.com/pylons-tech/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/modules/auth"
+	"github.com/pylons-tech/bdjuno/modules/bank"
+	"github.com/pylons-tech/bdjuno/modules/consensus"
+	"github.com/pylons-tech/bdjuno/modules/distribution"
+	"github.com/pylons-tech/bdjuno/modules/gov"
+	"github.com/pylons-tech/bdjuno/modules/mint"
+	"github.com/pylons-tech/bdjuno/modules/modules"
+	"github.com/pylons-tech/bdjuno/modules/pricefeed"
+	"github.com/pylons-tech/bdjuno/modules/slashing"
+	"github.com/pylons-tech/bdjuno/modules/staking"
 )
 
 // UniqueAddressesParser returns a wrapper around the given parser that removes all duplicated addresses

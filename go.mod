@@ -1,4 +1,4 @@
-module github.com/forbole/bdjuno
+module github.com/pylons-tech/bdjuno
 
 go 1.15
 
