@@ -3,7 +3,7 @@ package bank
 import (
 	"encoding/json"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	junomessages "github.com/desmos-labs/juno/modules/messages"
 

@@ -7,9 +7,9 @@ import (
 	"github.com/gogo/protobuf/proto"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	bankutils "github.com/forbole/bdjuno/modules/bank/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/pylons-tech/bdjuno/database"
+	bankutils "github.com/pylons-tech/bdjuno/modules/bank/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	juno "github.com/desmos-labs/juno/types"

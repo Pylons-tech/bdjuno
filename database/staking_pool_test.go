@@ -3,8 +3,8 @@ package database_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	dbtypes "github.com/forbole/bdjuno/database/types"
-	"github.com/forbole/bdjuno/types"
+	dbtypes "github.com/pylons-tech/bdjuno/database/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 func (suite *DbTestSuite) TestBigDipperDb_SaveStakingPool() {

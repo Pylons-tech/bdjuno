@@ -7,9 +7,9 @@ import (
 	authttypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 // GetGenesisAccounts parses the given appState and returns the genesis accounts

@@ -5,7 +5,7 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 

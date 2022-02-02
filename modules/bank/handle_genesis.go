@@ -4,17 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 
-	authutils "github.com/forbole/bdjuno/modules/auth/utils"
+	authutils "github.com/pylons-tech/bdjuno/modules/auth/utils"
 
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/pylons-tech/bdjuno/database"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/pylons-tech/bdjuno/types"
 )
 
 // HandleGenesis handles the genesis state of the x/bank module in order to store the initial values

@@ -7,9 +7,9 @@ import (
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	distrutils "github.com/forbole/bdjuno/modules/distribution/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/pylons-tech/bdjuno/database"
+	distrutils "github.com/pylons-tech/bdjuno/modules/distribution/utils"
+	"github.com/pylons-tech/bdjuno/modules/utils"
 )
 
 // RegisterPeriodicOps registers the additional utils that periodically run
