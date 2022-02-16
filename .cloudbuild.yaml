@@ -11,6 +11,8 @@ steps:
   args: ['push', 
           'gcr.io/${PROJECT_ID}/github.com/pylons-tech/bdjuno']
 
+# ADD script to output secret to password value in deploy/config
+
 # fetch GKE cluster credentials to be used for helm step
 - name: 'gcr.io/cloud-builders/kubectl'
   env:
