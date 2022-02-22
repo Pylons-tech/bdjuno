@@ -1,0 +1,46 @@
+
+[cosmos]
+  modules = []
+  prefix = "pylons"
+
+[database]
+  host = "35.223.47.56"
+  max_idle_connections = 1
+  max_open_connections = 1
+  name = "bdjuno"
+  password = "password"
+  port = 5432
+  schema = "public"
+  ssl_mode = ""
+  user = "bdjuno"
+
+[grpc]
+  address = "http://grpc.testnet.pylons.tech:9090/"
+  insecure = true
+
+[logging]
+  format = "text"
+  level = "debug"
+
+[parsing]
+  fast_sync = false
+  genesis_file_path = ""
+  listen_new_blocks = true
+  parse_genesis = true
+  parse_old_blocks = true
+  start_height = 1
+  workers = 1
+
+[pruning]
+  interval = 10
+  keep_every = 500
+  keep_recent = 100
+
+[rpc]
+  address = "http://grpc.testnet.pylons.tech:26657/"
+  client_name = "juno"
+  max_connections = 20
+
+[telemetry]
+  enabled = false
+  port = 500
