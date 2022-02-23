@@ -14,8 +14,8 @@ import (
 
 	junodb "github.com/forbole/juno/v2/database"
 
-	"github.com/pylons-tech/bdjuno/database"
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/database"
+	"github.com/forbole/bdjuno/v2/types"
 
 	juno "github.com/forbole/juno/v2/types"
 

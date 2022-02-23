@@ -6,10 +6,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
-	dbtypes "github.com/pylons-tech/bdjuno/database/types"
-	dbutils "github.com/pylons-tech/bdjuno/database/utils"
+	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	dbutils "github.com/forbole/bdjuno/v2/database/utils"
 )
 
 // SaveDelegations stores inside the database the given delegations data.

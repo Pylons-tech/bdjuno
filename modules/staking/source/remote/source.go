@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/query"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/forbole/juno/v2/node/remote"
+	"github.com/pylons-tech/juno/node/remote"
 
 	stakingsource "github.com/pylons-tech/bdjuno/modules/staking/source"
 )

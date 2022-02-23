@@ -4,11 +4,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/forbole/juno/v2/types/config"
 
-	distrsource "github.com/pylons-tech/bdjuno/modules/distribution/source"
+	distrsource "github.com/forbole/bdjuno/v2/modules/distribution/source"
 
 	"github.com/forbole/juno/v2/modules"
 
-	"github.com/pylons-tech/bdjuno/database"
+	"github.com/forbole/bdjuno/v2/database"
 )
 
 var (

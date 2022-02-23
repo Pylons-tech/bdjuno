@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/tx"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
 	tmtypes "github.com/tendermint/tendermint/types"
 

@@ -1,6 +1,6 @@
 package utils
 
-import "github.com/pylons-tech/bdjuno/types"
+import "github.com/forbole/bdjuno/v2/types"
 
 const (
 	maxPostgreSQLParams = 65535

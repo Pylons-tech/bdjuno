@@ -9,12 +9,12 @@ import (
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	dbtypes "github.com/pylons-tech/bdjuno/database/types"
+	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 )
 
 func (suite *DbTestSuite) TestBigDipperDb_SaveGovParams() {

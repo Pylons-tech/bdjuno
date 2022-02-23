@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/forbole/juno/v2/node/local"
+	"github.com/pylons-tech/juno/node/local"
 
 	govsource "github.com/pylons-tech/bdjuno/modules/gov/source"
 )

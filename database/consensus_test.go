@@ -3,8 +3,8 @@ package database_test
 import (
 	time "time"
 
-	dbtypes "github.com/pylons-tech/bdjuno/database/types"
-	"github.com/pylons-tech/bdjuno/types"
+	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	"github.com/forbole/bdjuno/v2/types"
 )
 
 func (suite *DbTestSuite) TestSaveConsensus_GetBlockHeightTimeMinuteAgo() {

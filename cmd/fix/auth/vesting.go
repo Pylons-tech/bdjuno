@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/forbole/juno/v2/cmd/parse"
-	"github.com/forbole/juno/v2/types/config"
+	"github.com/pylons-tech/juno/cmd/parse"
+	"github.com/pylons-tech/juno/types/config"
 	"github.com/spf13/cobra"
 
 	"github.com/pylons-tech/bdjuno/database"

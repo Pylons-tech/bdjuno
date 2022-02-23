@@ -3,9 +3,9 @@ package database
 import (
 	"fmt"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
-	dbtypes "github.com/pylons-tech/bdjuno/database/types"
+	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"

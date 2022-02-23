@@ -1,7 +1,7 @@
 package fix
 
 import (
-	"github.com/forbole/juno/v2/cmd/parse"
+	"github.com/pylons-tech/juno/cmd/parse"
 	"github.com/spf13/cobra"
 
 	fixauth "github.com/pylons-tech/bdjuno/cmd/fix/auth"

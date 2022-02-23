@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pylons-tech/bdjuno/types"
+	"github.com/forbole/bdjuno/v2/types"
 
 	"github.com/rs/zerolog/log"
 )
