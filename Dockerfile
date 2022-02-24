@@ -1,5 +1,5 @@
 FROM golang:1.16-alpine AS builder
-RUN apk update && apk add --no-cache make git
+RUN apk update && apk add --no-cache make
 WORKDIR /go/src/github.com/pylons-tech/bdjuno
 COPY . ./
 RUN make build

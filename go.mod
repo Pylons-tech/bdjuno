@@ -3,6 +3,7 @@ module github.com/pylons-tech/bdjuno
 go 1.15
 
 require (
+	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce
 	github.com/cosmos/cosmos-sdk v0.44.5
 	github.com/cosmos/ibc-go v1.2.1
 	github.com/desmos-labs/juno v0.0.0-20211005090705-514187767199
@@ -10,6 +11,7 @@ require (
 	github.com/go-co-op/gocron v0.3.3
 	github.com/gogo/protobuf v1.3.3
 	github.com/golang/snappy v0.0.3 // indirect
+	github.com/google/cel-go v0.9.0
 	github.com/jmoiron/sqlx v1.2.1-0.20200324155115-ee514944af4b
 	github.com/lib/pq v1.10.2
 	github.com/mitchellh/mapstructure v1.4.2 // indirect
