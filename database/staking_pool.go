@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/Pylons-tech/bdjuno/types"
 )
 
 // SaveStakingPool allows to save for the given height the given stakingtypes pool

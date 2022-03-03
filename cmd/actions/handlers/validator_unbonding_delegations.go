@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
 )
 
 func ValidatorUnbondingDelegations(w http.ResponseWriter, r *http.Request) {

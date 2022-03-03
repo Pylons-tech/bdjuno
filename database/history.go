@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/Pylons-tech/bdjuno/types"
 )
 
 // SaveTokenPricesHistory stores the given prices as historic ones

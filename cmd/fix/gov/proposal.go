@@ -9,10 +9,10 @@ import (
 	"github.com/forbole/juno/v2/types/config"
 	"github.com/spf13/cobra"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
-	"github.com/forbole/bdjuno/v2/modules/gov"
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/modules"
+	"github.com/Pylons-tech/bdjuno/modules/gov"
+	"github.com/Pylons-tech/bdjuno/utils"
 )
 
 // proposalCmd returns the Cobra command allowing to fix all things related to a proposal

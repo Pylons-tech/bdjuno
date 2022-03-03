@@ -8,8 +8,8 @@ import (
 	"github.com/forbole/juno/v2/cmd/parse"
 	"github.com/spf13/cobra"
 
-	"github.com/forbole/bdjuno/v2/cmd/actions/handlers"
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
+	"github.com/Pylons-tech/bdjuno/cmd/actions/handlers"
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
 )
 
 // NewActionsCmd returns the Cobra command allowing to activate hasura actions

@@ -6,7 +6,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/tx"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/Pylons-tech/bdjuno/types"
 
 	tmtypes "github.com/tendermint/tendermint/types"
 

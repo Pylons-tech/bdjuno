@@ -3,10 +3,10 @@ package types
 import (
 	"time"
 
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 	stakingtype "github.com/cosmos/cosmos-sdk/x/staking/types"
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 )
 
 // ========================= Withdraw Address Response =========================

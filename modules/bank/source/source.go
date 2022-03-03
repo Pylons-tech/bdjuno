@@ -3,7 +3,7 @@ package source
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/Pylons-tech/bdjuno/types"
 )
 
 type Source interface {

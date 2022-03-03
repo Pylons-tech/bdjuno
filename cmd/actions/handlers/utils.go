@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"net/http"
 
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/modules"
+	"github.com/Pylons-tech/bdjuno/types/config"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
-	"github.com/forbole/bdjuno/v2/types/config"
 	"github.com/forbole/juno/v2/cmd/parse"
 	"github.com/forbole/juno/v2/modules/messages"
 

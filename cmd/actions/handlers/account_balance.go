@@ -6,10 +6,10 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/Pylons-tech/bdjuno/utils"
 )
 
 func AccountBalance(w http.ResponseWriter, r *http.Request) {

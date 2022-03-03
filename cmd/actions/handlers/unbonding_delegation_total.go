@@ -7,10 +7,10 @@ import (
 	"math/big"
 	"net/http"
 
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/Pylons-tech/bdjuno/utils"
 )
 
 func UnbondingDelegationsTotal(w http.ResponseWriter, r *http.Request) {

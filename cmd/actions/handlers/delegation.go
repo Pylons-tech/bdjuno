@@ -8,11 +8,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/Pylons-tech/bdjuno/utils"
 )
 
 func Delegation(w http.ResponseWriter, r *http.Request) {

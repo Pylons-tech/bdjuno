@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
 )
 
 func DelegatorWithdrawAddress(w http.ResponseWriter, r *http.Request) {

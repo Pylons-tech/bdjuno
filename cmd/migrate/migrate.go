@@ -8,9 +8,9 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 
-	v1 "github.com/forbole/bdjuno/v2/cmd/migrate/v1"
-	"github.com/forbole/bdjuno/v2/modules/pricefeed"
-	"github.com/forbole/bdjuno/v2/types"
+	v1 "github.com/Pylons-tech/bdjuno/cmd/migrate/v1"
+	"github.com/Pylons-tech/bdjuno/modules/pricefeed"
+	"github.com/Pylons-tech/bdjuno/types"
 
 	junomigrate "github.com/forbole/juno/v2/cmd/migrate"
 	junov1 "github.com/forbole/juno/v2/cmd/migrate/v1"

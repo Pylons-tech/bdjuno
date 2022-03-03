@@ -6,9 +6,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	"github.com/Pylons-tech/bdjuno/utils"
 	"github.com/cosmos/cosmos-sdk/types/query"
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	"github.com/forbole/bdjuno/v2/utils"
 )
 
 func UnbondingDelegations(w http.ResponseWriter, r *http.Request) {

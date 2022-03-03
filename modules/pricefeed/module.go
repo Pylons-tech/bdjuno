@@ -4,7 +4,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/forbole/juno/v2/types/config"
 
-	"github.com/forbole/bdjuno/v2/database"
+	"github.com/Pylons-tech/bdjuno/database"
 
 	"github.com/forbole/juno/v2/modules"
 )

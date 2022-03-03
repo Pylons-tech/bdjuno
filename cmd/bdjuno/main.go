@@ -8,15 +8,15 @@ import (
 	parsecmd "github.com/forbole/juno/v2/cmd/parse"
 	"github.com/forbole/juno/v2/modules/messages"
 
-	actionscmd "github.com/forbole/bdjuno/v2/cmd/actions"
-	fixcmd "github.com/forbole/bdjuno/v2/cmd/fix"
-	migratecmd "github.com/forbole/bdjuno/v2/cmd/migrate"
-	parsegenesiscmd "github.com/forbole/bdjuno/v2/cmd/parse-genesis"
+	actionscmd "github.com/Pylons-tech/bdjuno/cmd/actions"
+	fixcmd "github.com/Pylons-tech/bdjuno/cmd/fix"
+	migratecmd "github.com/Pylons-tech/bdjuno/cmd/migrate"
+	parsegenesiscmd "github.com/Pylons-tech/bdjuno/cmd/parse-genesis"
 
-	"github.com/forbole/bdjuno/v2/types/config"
+	"github.com/Pylons-tech/bdjuno/types/config"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/modules"
 )
 
 func main() {

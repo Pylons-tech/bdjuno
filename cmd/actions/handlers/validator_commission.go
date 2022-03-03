@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 )
 
 func ValidatorCommissionAmount(w http.ResponseWriter, r *http.Request) {

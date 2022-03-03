@@ -1,8 +1,9 @@
-module github.com/forbole/bdjuno/v2
+module github.com/pylons-tech/bdjuno
 
 go 1.16
 
 require (
+	github.com/btcsuite/btcutil v1.0.2
 	github.com/cosmos/cosmos-sdk v0.42.9
 	github.com/forbole/juno/v2 v2.0.0-20220223115557-e4ed06a008de
 	github.com/go-co-op/gocron v1.13.0

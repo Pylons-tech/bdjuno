@@ -5,7 +5,7 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/Pylons-tech/bdjuno/types"
 )
 
 // UpdateParams updates the governance parameters for the given height

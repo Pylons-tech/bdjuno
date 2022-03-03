@@ -6,7 +6,7 @@ import (
 	"github.com/forbole/juno/v2/modules/messages"
 	"github.com/forbole/juno/v2/types/config"
 
-	"github.com/forbole/bdjuno/v2/database"
+	"github.com/Pylons-tech/bdjuno/database"
 )
 
 const (

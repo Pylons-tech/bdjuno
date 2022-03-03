@@ -6,9 +6,9 @@ import (
 
 	fixblocks "github.com/forbole/juno/v2/cmd/fix/blocks"
 
-	fixauth "github.com/forbole/bdjuno/v2/cmd/fix/auth"
-	fixgov "github.com/forbole/bdjuno/v2/cmd/fix/gov"
-	fixstaking "github.com/forbole/bdjuno/v2/cmd/fix/staking"
+	fixauth "github.com/Pylons-tech/bdjuno/cmd/fix/auth"
+	fixgov "github.com/Pylons-tech/bdjuno/cmd/fix/gov"
+	fixstaking "github.com/Pylons-tech/bdjuno/cmd/fix/staking"
 )
 
 // NewFixCmd returns the Cobra command allowing to fix some BDJuno bugs without having to re-sync the whole database

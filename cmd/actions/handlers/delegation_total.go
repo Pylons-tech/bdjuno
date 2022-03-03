@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	actionstypes "github.com/Pylons-tech/bdjuno/cmd/actions/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	actionstypes "github.com/forbole/bdjuno/v2/cmd/actions/types"
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
 
-	"github.com/forbole/bdjuno/v2/utils"
+	"github.com/Pylons-tech/bdjuno/utils"
 )
 
 func TotalDelegationAmount(w http.ResponseWriter, r *http.Request) {
