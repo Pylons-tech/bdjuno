@@ -5,8 +5,8 @@ import (
 
 	"github.com/lib/pq"
 
-	dbtypes "github.com/forbole/bdjuno/database/types"
-	"github.com/forbole/bdjuno/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
+	"github.com/Pylons-tech/bdjuno/types"
 )
 
 // SaveAccountBalanceHistory saves the given entry inside the account_balance_history table

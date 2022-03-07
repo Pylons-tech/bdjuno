@@ -7,9 +7,9 @@ import (
 	"github.com/gogo/protobuf/proto"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	authutils "github.com/forbole/bdjuno/modules/auth/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/Pylons-tech/bdjuno/database"
+	authutils "github.com/Pylons-tech/bdjuno/modules/auth/utils"
+	"github.com/Pylons-tech/bdjuno/modules/utils"
 )
 
 // HandleMsg handles any message updating the involved accounts

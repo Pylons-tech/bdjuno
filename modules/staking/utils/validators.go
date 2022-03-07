@@ -9,9 +9,9 @@ import (
 
 	"github.com/desmos-labs/juno/client"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules/staking/keybase"
-	"github.com/forbole/bdjuno/types"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/modules/staking/keybase"
+	"github.com/Pylons-tech/bdjuno/types"
 
 	"github.com/rs/zerolog/log"
 

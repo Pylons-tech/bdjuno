@@ -11,8 +11,8 @@ import (
 	"github.com/go-co-op/gocron"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/types"
 )
 
 var (

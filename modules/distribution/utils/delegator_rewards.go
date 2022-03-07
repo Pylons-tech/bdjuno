@@ -6,11 +6,11 @@ import (
 
 	"github.com/desmos-labs/juno/client"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/types/config"
 
+	"github.com/Pylons-tech/bdjuno/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	"github.com/forbole/bdjuno/types"
 	"github.com/rs/zerolog/log"
 )
 

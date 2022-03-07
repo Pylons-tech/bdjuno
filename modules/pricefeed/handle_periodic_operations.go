@@ -6,15 +6,15 @@ import (
 
 	juno "github.com/desmos-labs/juno/types"
 
-	historyutils "github.com/forbole/bdjuno/modules/history/utils"
-	"github.com/forbole/bdjuno/types"
+	historyutils "github.com/Pylons-tech/bdjuno/modules/history/utils"
+	"github.com/Pylons-tech/bdjuno/types"
 
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules/pricefeed/coingecko"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/modules/pricefeed/coingecko"
+	"github.com/Pylons-tech/bdjuno/modules/utils"
 )
 
 // RegisterPeriodicOps returns the AdditionalOperation that periodically runs fetches from

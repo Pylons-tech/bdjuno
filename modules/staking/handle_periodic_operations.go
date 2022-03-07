@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/forbole/bdjuno/database"
-	stakingutils "github.com/forbole/bdjuno/modules/staking/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/Pylons-tech/bdjuno/database"
+	stakingutils "github.com/Pylons-tech/bdjuno/modules/staking/utils"
+	"github.com/Pylons-tech/bdjuno/modules/utils"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"

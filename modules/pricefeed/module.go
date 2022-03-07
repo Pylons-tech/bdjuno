@@ -1,9 +1,9 @@
 package pricefeed
 
 import (
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/Pylons-tech/bdjuno/types/config"
 
-	"github.com/forbole/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/database"
 
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	"github.com/desmos-labs/juno/modules"

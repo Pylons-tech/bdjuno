@@ -12,8 +12,8 @@ import (
 	junodb "github.com/desmos-labs/juno/db"
 	"github.com/desmos-labs/juno/types/logging"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/types"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/types"
 
 	juno "github.com/desmos-labs/juno/types"
 

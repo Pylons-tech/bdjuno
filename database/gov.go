@@ -8,9 +8,9 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/Pylons-tech/bdjuno/types"
 
-	dbtypes "github.com/forbole/bdjuno/database/types"
+	dbtypes "github.com/Pylons-tech/bdjuno/database/types"
 
 	"github.com/lib/pq"
 )

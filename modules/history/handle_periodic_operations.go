@@ -4,9 +4,9 @@ import (
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 
-	"github.com/forbole/bdjuno/database"
-	historyutils "github.com/forbole/bdjuno/modules/history/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/Pylons-tech/bdjuno/database"
+	historyutils "github.com/Pylons-tech/bdjuno/modules/history/utils"
+	"github.com/Pylons-tech/bdjuno/modules/utils"
 )
 
 // RegisterPeriodicOps returns the operations that periodically runs and updates the users historic balance

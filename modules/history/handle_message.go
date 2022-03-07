@@ -12,9 +12,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/desmos-labs/juno/modules/messages"
 
-	"github.com/forbole/bdjuno/database"
-	historyutils "github.com/forbole/bdjuno/modules/history/utils"
-	"github.com/forbole/bdjuno/modules/utils"
+	"github.com/Pylons-tech/bdjuno/database"
+	historyutils "github.com/Pylons-tech/bdjuno/modules/history/utils"
+	"github.com/Pylons-tech/bdjuno/modules/utils"
 )
 
 // HandleMsg handles any message updating the involved accounts

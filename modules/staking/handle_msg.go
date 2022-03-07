@@ -5,9 +5,9 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/forbole/bdjuno/database"
-	stakingutils "github.com/forbole/bdjuno/modules/staking/utils"
-	"github.com/forbole/bdjuno/types"
+	"github.com/Pylons-tech/bdjuno/database"
+	stakingutils "github.com/Pylons-tech/bdjuno/modules/staking/utils"
+	"github.com/Pylons-tech/bdjuno/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"

@@ -3,15 +3,15 @@ package main
 import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	ibc "github.com/cosmos/ibc-go/modules/core"
 	"github.com/desmos-labs/juno/cmd"
 	parsecmd "github.com/desmos-labs/juno/cmd/parse"
 	"github.com/desmos-labs/juno/modules/messages"
 
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/Pylons-tech/bdjuno/types/config"
+	"github.com/Pylons-tech/pylons/x/pylons"
 
-	"github.com/forbole/bdjuno/database"
-	"github.com/forbole/bdjuno/modules"
+	"github.com/Pylons-tech/bdjuno/database"
+	"github.com/Pylons-tech/bdjuno/modules"
 )
 
 func main() {
@@ -39,7 +39,7 @@ func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
 		simapp.ModuleBasics,
 		module.NewBasicManager(
-			ibc.AppModule{},
+			pylons.AppModuleBasic{},
 		),
 	}
 }

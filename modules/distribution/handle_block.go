@@ -8,11 +8,11 @@ import (
 	"github.com/rs/zerolog/log"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/forbole/bdjuno/types"
+	"github.com/Pylons-tech/bdjuno/types"
 
-	"github.com/forbole/bdjuno/database"
-	distrutils "github.com/forbole/bdjuno/modules/distribution/utils"
-	"github.com/forbole/bdjuno/types/config"
+	"github.com/Pylons-tech/bdjuno/database"
+	distrutils "github.com/Pylons-tech/bdjuno/modules/distribution/utils"
+	"github.com/Pylons-tech/bdjuno/types/config"
 )
 
 // HandleBlock represents a method that is called each time a new block is created
