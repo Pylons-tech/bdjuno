@@ -14,10 +14,9 @@ import (
 
 	"github.com/forbole/bdjuno/v2/types/config"
 
+	pylonsApp "github.com/Pylons-tech/pylons/app"
 	"github.com/forbole/bdjuno/v2/database"
 	"github.com/forbole/bdjuno/v2/modules"
-
-	gaiaapp "github.com/cosmos/gaia/v6/app"
 )
 
 func main() {
@@ -54,7 +53,7 @@ func main() {
 // This should be edited by custom implementations if needed.
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
-		gaiaapp.ModuleBasics,
+		pylonsApp.ModuleBasics,
 	}
 }
 
