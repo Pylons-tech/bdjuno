@@ -1,9 +1,11 @@
-FROM golang:1.17 AS builder
+FROM golang:1.17
 WORKDIR /go/src/github.com/Pylons-tech/bdjuno
 COPY . ./
+COPY ./deploy/config /bdjuno/
 RUN make build
 
-FROM alpine:latest
+
 WORKDIR /bdjuno
-COPY --from=builder /go/src/github.com/Pylons-tech/bdjuno/build/bdjuno /usr/bin/bdjuno
-CMD [ "bdjuno", "parse" ]
+COPY ./build/bdjuno /usr/bin/bdjuno
+#COPY /go/src/github.com/Pylons-tech/bdjuno/deploy/config /bdjuno/
+CMD [ "/usr/bin/bdjuno", "parse", "--home", "/bdjuno/" ]

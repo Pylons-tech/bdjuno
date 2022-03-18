@@ -1,0 +1,39 @@
+
+steps:
+# Docker Build
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 
+          'gcr.io/${PROJECT_ID}/github.com/pylons-tech/bdjuno', 
+          '.']
+
+# Docker Push
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 
+          'gcr.io/${PROJECT_ID}/github.com/pylons-tech/bdjuno']
+
+# fetch GKE cluster credentials to be used for helm step
+- name: 'gcr.io/cloud-builders/kubectl'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+  - 'KUBECONFIG=/workspace/.kube/config'
+  args: ['cluster-info']
+
+- name: gcr.io/$PROJECT_ID/cloud-builders-community/helm
+  id: Deploy chart
+  args:
+    - upgrade
+    - -i
+    - bdjuno
+    - --namespace
+    - default
+    - ./deploy/bdjuno
+    - -f
+    - ./deploy/bdjuno/values.yaml
+  env:
+    - KUBECONFIG=/workspace/.kube/config
+    - TILLERLESS=true
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY

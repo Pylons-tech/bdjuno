@@ -1,9 +1,10 @@
-module github.com/forbole/bdjuno/v2
+module github.com/Pylons-tech/bdjuno
 
 go 1.17
 
 require (
 	github.com/cosmos/cosmos-sdk v0.45.1
+	github.com/forbole/bdjuno/v2 v2.0.2
 	github.com/forbole/juno/v2 v2.0.0-20220308070656-570bc10bf70a
 	github.com/go-co-op/gocron v1.11.0
 	github.com/gogo/protobuf v1.3.3
