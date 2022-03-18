@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/hasura-342723/github.com/pylons-tech/bdjuno
+  repository: gcr.io/hasura-342723/bdjuno
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
