@@ -50,7 +50,7 @@ spec:
         - name: cloudsql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:1.11
           command: ["/cloud_sql_proxy",
-                    "-instances=hasura-342723:us-central1:hasura-postgres=tcp:5432",
+                    "-instances=hasura-342723:us-central1:hasura-postgres-1=tcp:5432",
                     "-credential_file=/secrets/cloudsql/hasura-342723-2efbb832fb7a.json"]
           # [START cloudsql_security_context]
           securityContext:
