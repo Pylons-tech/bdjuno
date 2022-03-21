@@ -39,8 +39,8 @@ spec:
           image: gcr.io/hasura-342723/bdjuno-hasura-actions
           ports:
             - name: bactions
-              containerPort: 3000
               protocol: TCP
+              containerPort: 3000
           # livenessProbe:
           #   httpGet:
           #     path: /
