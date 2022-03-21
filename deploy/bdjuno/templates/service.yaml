@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: 3000
-      targetPort: bdjuno-hasura-actions
+      targetPort: bactions
       protocol: TCP
-      name: bdjuno-hasura-actions
+      name: bactions
   selector:
     {{- include "bdjuno.selectorLabels" . | nindent 4 }}
