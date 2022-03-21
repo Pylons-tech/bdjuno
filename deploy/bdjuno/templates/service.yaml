@@ -7,9 +7,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port: 3000
+      targetPort: bdjuno-hasura-actions
       protocol: TCP
-      name: http
+      name: bdjuno-hasura-actions
   selector:
     {{- include "bdjuno.selectorLabels" . | nindent 4 }}
